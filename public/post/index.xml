@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Ashvik Dubey</title>
+    <link>https://example.ashvikdubey.com/post/</link>
+    <description>Recent content in Posts on Ashvik Dubey</description>
+    <image>
+      <url>https://example.ashvikdubey.com/papermod-cover.png</url>
+      <link>https://example.ashvikdubey.com/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.ashvikdubey.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Is Apple&#39;s M1 Chip So Fast?</title>
+      <link>https://example.ashvikdubey.com/post/whyisapplesm1chipsofast/</link>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.ashvikdubey.com/post/whyisapplesm1chipsofast/</guid>
+      <description>On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.
+In real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Why Is Apple&#39;s M1 Chip So Fast? | Ashvik Dubey</title>
+
+<meta name="keywords" content="" />
+<meta name="description" content="On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.
+In real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them.">
+<meta name="author" content="Ashvik Dubey">
+<link rel="canonical" href="https://example.ashvikdubey.com/post/whyisapplesm1chipsofast/" />
+<link href="/assets/css/stylesheet.min.746a86b58bb2b052b5e4df8216510494f04f81e62c08d626150c26c69ca929da.css" integrity="sha256-dGqGtYuysFK15N&#43;CFlEElPBPgeYsCNYmFQwmxpypKdo=" rel="preload stylesheet"
+    as="style">
+
+<link rel="icon" href="https://example.ashvikdubey.com/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://example.ashvikdubey.com/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://example.ashvikdubey.com/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://example.ashvikdubey.com/apple-touch-icon.png">
+<link rel="mask-icon" href="https://example.ashvikdubey.com/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.85.0" />
+
+
+<meta property="og:title" content="Why Is Apple&#39;s M1 Chip So Fast?" />
+<meta property="og:description" content="On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.
+In real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.ashvikdubey.com/post/whyisapplesm1chipsofast/" /><meta property="og:image" content="https://example.ashvikdubey.com/papermod-cover.png"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-01-29T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-01-29T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://example.ashvikdubey.com/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Why Is Apple&#39;s M1 Chip So Fast?"/>
+<meta name="twitter:description" content="On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.
+In real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://example.ashvikdubey.com/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Why Is Apple's M1 Chip So Fast?",
+      "item": "https://example.ashvikdubey.com/post/whyisapplesm1chipsofast/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Is Apple's M1 Chip So Fast?",
+  "name": "Why Is Apple\u0027s M1 Chip So Fast?",
+  "description": "On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.\nIn real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them.",
+  "keywords": [
+    
+  ],
+  "articleBody": "On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.\nIn real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them. In disbelief, people have started asking how on earth this is possible?\nIf you are one of those people, you have come to the right place. Here I plan to break it down into digestible pieces exactly what it is that Apple has done with the M1. Specifically the questions I think a lot of people have are:\nWhat are the technical reasons this M1 chip is so fast? Has Apple made some really exotic technical choices to make this possible? How easy will it be for the competition such as Intel and AMD to pull the same technical tricks? Sure you could try to Google this, but if you try to learn what Apple has done beyond the superficial explanations, you will quickly get buried in highly technical jargon such as M1 using very wide instruction decoders, enormous reorder buffer (ROB), etc. Unless you are a CPU hardware geek, a lot of this will simply be gobbledygook.\nWhat is a microprocessor (CPU)?\nNormally when speaking of chips from Intel and AMD we talk about central processing units (CPUs) or microprocessors. These pull in instructions from memory. Then each instruction is typically carried out in sequence.\nA very basic RISC CPU, not the M1. Instructions are moved from memory along blue arrows into the instruction register. There a decoder figures out what the instruction is and enables different parts of the CPU through the red control lines. The ALU adds and subtracts numbers placed in the registers. A CPU at its most basic level is a device with a number of named memory cells called registers and a number of computational units called arithmetic logic units (ALU). The ALUs perform things like addition, subtraction, and other basic math operations. However, these are only connected to the CPU registers. If you want to add up two numbers, you have to get those two numbers from memory and into two registers in the CPU.\nHere are some examples of typical instructions that a RISC CPU as found on the M1 carries out.\nload r1, 150 load r2, 200 add r1, r2 store r1, 310 Here r1 and r2 are the registers I talked about. Modern RISC CPUs cannot do operations on numbers that are not in a register like this. For example, it cannot add two numbers residing in RAM in two different locations. Instead, it has to pull these two numbers into a separate register. That is what we do in this simple example. We pull in the number at memory location 150 in the RAM and put it into register r1 in the CPU. Next, we put the contents of address 200 into register r2. Only then can the numbers be added with the add r1, r2 instruction.\nAn old mechanical calculator with two registers: the accumulator and input register. Modern CPUs typically have more than a dozen registers, and they are electronic rather than mechanical. The concept of registers is old. For example, on this old mechanical calculator, the register is what holds the numbers you are adding. Likely the origin of the term cash register. The register is where you registered input numbers.\nThe M1 is not a CPU! But here is a very important thing to understand about the M1:\nThe M1 is not a CPU, it is a whole system of multiple chips put into one large silicon package. The CPU is just one of these chips.\nBasically, the M1 is one whole computer onto a chip. The M1 contains a CPU, graphical processing unit (GPU), memory, input and output controllers, and many more things making up a whole computer. This is what we call a system on a chip (SoC).\nM1 is a system on a chip. Meaning all the parts making up a computer are placed on one silicon chip. Today if you buy a chip — whether from Intel or AMD — you actually get what amounts to multiple microprocessors in one package. In the past computers would have multiple physically separate chips on the motherboard of the computer.\nExample of a computer motherboard. Memory, CPU, graphics cards, IO controllers, network cards, and many other components can be attached to the motherboard to communicate with each other. However because we are able to put so many transistors on a silicon die today, companies such as Intel and AMD began putting multiple microprocessors onto one chip. Today we refer to these chips as CPU cores. One core is basically a full independent chip that can read instructions from memory and perform calculations.\nA microchip with multiple CPU cores. This has for a long time been the name of the game in terms of increasing performance: Just add more general-purpose CPU cores. But there is a disturbance in the force. There is one player in the CPU market which is deviating from this trend.\nApple’s not so secret heterogeneous computing strategy Instead of adding ever more general-purpose CPU cores, Apple has followed another strategy: They have started adding ever more specialized chips doing a few specialized tasks. The benefit of this is that specialized chips tend to be able to perform their tasks significantly faster using much less electric current than a general-purpose CPU core.\nThis is not entirely new knowledge. For many years already specialized chips such as the graphical processing units (GPUs) have been sitting in Nvidia and AMD graphics cards performing operations related to graphics much faster than general-purpose CPUs.\nWhat Apple has done is simply to take a more radical shift toward this direction. Rather than just having general-purpose cores and memory, the M1 contains a wide variety of specialized chips:\nCentral processing unit (CPU) — the “brains” of the SoC. Runs most of the code of the operating system and your apps. Graphics processing unit (GPU) — handles graphics-related tasks, such as visualizing an app’s user interface and 2D/3D gaming. Image processing unit (ISP) — can be used to speed up common tasks done by image processing applications. Digital signal processor (DSP) — handles more mathematically intensive functions than a CPU. Includes decompressing music files. Neural processing unit (NPU) — used in high-end smartphones to accelerate machine learning (A.I.) tasks. These include voice recognition and camera processing. Video encoder/decoder — handles the power-efficient conversion of video files and formats. Secure Enclave — encryption, authentication, and security. Unified memory — allows the CPU, GPU, and other cores to quickly exchange information. This is part of the reason why a lot of people working on images and video editing with the M1 Macs are seeing such speed improvements. A lot of the tasks they do can run directly on specialized hardware. That is what allows a cheap M1 Mac Mini to encode a large video file without breaking a sweat while an expensive iMac has all its fans going full blast and still cannot keep up.\nRead more about heterogeneous computing: Apple M1 foreshadows Rise of RISC-V.\nIn blue you see multiple CPU cores accessing memory, and in green you see large numbers of GPU cores accessing memory. What is Special About Apple’s Unified Memory Architecture? Apple’s “Unified Memory Architecture” (UMA) is a bit tricky to wrap your head around (I got it wrong first time I wrote it down here).\nTo explain why, we need to take a few steps back.\nFor a long time cheap computer systems have had the CPU and GPU integrated into the same chip (same silicon die). These have been famously slow. In the past saying “integrated graphics” was essentially the same as saying “slow graphics.”\nThese where slow for severals reasons:\nSeparate areas of this memory got reserved for the CPU and GPU. If the CPU had a chunk of data it wanted the GPU to use, it couldn’t say “here have some of my memory.” No, the CPU had to explicitly copy the whole chunk of data over the memory area controlled by the GPU.\nCPUs don’t need a lot of data served, but they want it fast. CPUs and GPUs don’t want their memory served the same way. Let us do a silly food analogy: CPUs want their plate of data served very quickly by the waiter, but they are totally cool with small portion sizes. Imagine a fancy French restaurant with waiters on rollerblades to serve you really quickly.\nThis is how your GPU wants their memory: huge portions. The more the merrier. GPUs in contrast are cool with the waiter being slow to serve the data. But the GPUs want enormous servings. They gobble massive amounts of data because they are massive parallel machines, that can chew through lots of data in parallel. Imagine an American junk food place, where the food takes some time to arrive because they are pushing a whole trolley of food to your seating area.\nWith such different needs, putting CPUs and GPUs on the same physical chip was not a great idea. The GPUs would sit there starving while given small French servings. The result was that there was no point in putting powerful GPUs on an SoC. The tiny portions of data served up, could easily be chewed up by a weak little GPU.\nThe second problem was that large GPUs produce a lot of heat and thus you cannot integrate them with the CPU without getting problems ridding yourself of the heat produced. Thus discrete graphics cards tend to look like the one below: Large beasts with massive cooling fans. They have special dedicated memory designed to serve the greedy cards massive amounts of data.\nGeForce RTX 3080 That is why these cards have high performance. But they have an achilles heel: Whenever they have to get data from the memory used by the CPU, this happens over a set of copper traces on the computer motherboard called a PCIe bus. Try chugging water through a super thin straw. It may get to your mouth fast, but the throughput is totally inadequate.\nApple’s Unified Memory Architecture tries to solve all these problems without having the disadvantages of old school shared memory. They achieve this in the following ways:\nThere is no special area reserved just for the CPU or just the GPU. Memory is allocated to both processors. They can both use the same memory. No copying is needed. Apple uses memory which serves both large chunks of data and serves it fast. In computer speak that is called low latency and high throughput. Thus the need to be connected to separate types of memory is removed. Apple has gotten the watt usage of the GPU down, so that a relatively powerful GPU can be integrated without overheating the SoC. And ARM chips produce less heat, allowing the GPU to have a higher heat budget than a GPU on the same silicon die as an AMD or Intel CPU. Some will say unified memory is not entirely new. It is true that different systems have had it in the past. But then the difference in memory requirements may not have been as large. Secondly what Nvidia calls Unified Memory is not really the same thing. In the Nvidea world Unified Memory simply means that there is software and hardware which takes care of automatically copying data back and forth between the separate CPU and GPU memory. Thus from a programmers perspective Apple and Nvidia Unified Memory may look the same, but it is not the same in a physical sense.\nThere is of course a tradeoff in this strategy. Getting this high bandwidth memory (big servings) require full integration which means you take away the opportunity from customers to upgrade their memory. But Apple seeks to minimize this problem by making the communication with the SSD disks so fast, that they essentially work like old fashion memory.\nHow Mac’s used GPUs before unified memory. There was even an option of having graphics cards outside the computer using a Thunderbolt 3 cable. There is some speculation that this may still be possible in the future. If SoCs Are So Smart, Why Don’t Intel and AMD Copy This Strategy? If what Apple is doing is so smart, why is not everybody doing it? To some extent they are. Other ARM chip makers are increasingly putting in specialized hardware.\nAMD has also started putting stronger GPUs on some of their chips and moving gradually toward some form of SoC with the accelerated processing units (APU) which are basically CPU cores and GPU cores placed on the same silicon die.\nAMD Ryzen Accelerated Processing Unit (APU) which combines CPU and GPU (Radeon Vega) on one silicon chip. Does however not contain other co-processors, IO-controllers, or unified memory. Yet there are important reasons why they cannot do this. An SoC is essentially a whole computer on a chip. That makes it a more natural fit for an actual computer-maker, such as HP and Dell. Let me clarify with a silly car analogy: If your business model is to build and sell car engines, it would be an unusual leap to begin manufacturing and selling whole cars.\nFor ARM, in contrast, this isn’t an issue. Computer makers such as Dell or HP could simply license ARM intellectual property and buy IP for other chips, to add whatever specialized hardware they think their SoC should have. Next, they ship the finished design over to a semiconductor foundry such as GlobalFoundries or TSMC, which manufactures chips for AMD and Apple today.\nTSMC semiconductor foundry in Taiwan. TSMC manufactures chips for other companies such as AMD, Apple, Nvidia, and Qualcomm. Here we get a big problem with the Intel and AMD business model. Their business models are based on selling general-purpose CPUs, which people just slot onto a large PC motherboard. Thus computer-makers can simply buy motherboards, memory, CPUs, and graphics cards from different vendors and integrate them into one solution.\nBut we are quickly moving away from that world. In the new SoC world, you don’t assemble physical components from different vendors. Instead, you assemble IP (intellectual property) from different vendors. You buy the design for graphics cards, CPUs, modems, IO controllers, and other things from different vendors and use that to design an SoC in-house. Then you get a foundry to manufacture this.\nNow you got a big problem, because neither Intel, AMD, or Nvidia are going to license their intellectual property to Dell or HP for them to make an SoC for their machines.\nSure Intel and AMD may simply begin to sell whole finished SoCs. But what are these to contain? PC-makers may have different ideas of what they should contain. You potentially get a conflict between Intel, AMD, Microsoft, and PC-makers about what sort of specialized chips should be included because these will need software support.\nFor Apple this is simple. They control the whole widget. They give you, for example, the Core ML library for developers to write machine learning stuff. Whether Core ML runs on Apple’s CPU or the Neural Engine is an implementation detail developers don’t have to care about.\nThe fundamental challenge of making any CPU run fast So heterogeneous computing is part of the reason but not the sole reason. The fast general-purpose CPU cores on the M1, called Firestorm, are genuinely fast. This is a major deviation from ARM CPU cores in the past which tended to be very weak compared to AMD and Intel cores.\nFirestorm, in contrast, beats most Intel cores and almost beats the fastest AMD Ryzen cores. Conventional wisdom said that was not going to happen.\nBefore talking about what makes Firestorm fast it helps to understand what the core idea of making a fast CPU is really about.\nIn principle you accomplish in a combination of two strategies:\nPerform more instructions in a sequence faster. Perform lots of instructions in parallel. Back in the ’80s, it was easy. Just increase the clock frequency and the instructions would finish faster. Every clock cycle is when the computer does something. But this something can be quite little. Thus an instruction may require multiple clock cycles to finish because it is made up of several smaller tasks.\nHowever, today increasing the clock frequency is next to impossible. That is the whole “End of Moore’s Law” that people have been harping on for over a decade now.\nThus it is really about executing as many instructions as possible in parallel.\nMulti-core or Out-of-Order processors? There are two approaches to this.\nAdd more CPU cores. Each core works independent and in parallel. Make each CPU core execute multiple instructions in parallel. For a software developer, adding cores is like adding threads. Every CPU core is like a hardware thread.\nIf you don’t know what a thread is, then you can think of it as the process of carrying out a task. With two cores, a CPU can carry out two separate tasks concurrently: two threads. The tasks could be described as two separate programs stores in memory or it could actually be the same program performed twice. Each thread needs some bookkeeping, such as where in a sequence of program instructions the thread is currently at. Each thread may store temporary results which should be kept separate.\nIn principle, a processor can have just one core and run multiple threads. In this case, it simply halts one thread and stores current progress before switching to another. Later it switches back. This doesn’t bring much of a performance enhancement unless the thread has to frequently halt to:\nWait for input from the user Data from a slow network connection, etc. Let us call these software threads. Hardware threads mean you have actual physical CPU cores at your disposal to speed up things.\nThe problem with threads is that software developers have to write so called multi-threaded code. That is often difficult. In the past, this was some of the hardest code to write. However making server software multi-threaded tends to be easy. It is simply a matter of handling each user request on a separate thread. Thus in this case having lots of cores, is an obvious advantage. Especially for cloud services.\nThe Ampere Altra Max ARM CPU with 128 cores designed for cloud computing, where a lot of hardware threads is a benefit. That is the reason why you see ARM CPU-makers such as Ampere making CPUs such as the Altra Max which has a crazy 128 cores. This chip is specifically made for the cloud. You don’t need crazy single-core performance, because in the cloud it is all about having as many threads as possible per watt to handle as many concurrent users as possible.\nRead more about ARM CPUs with many cores: Are Servers Next for Apple?\nApple, in contrast, is on the complete opposite end of the spectrum. They make single-user devices. Lots of threads is not an advantage. Their devices are used for gaming, video editing, development, etc. They want desktops with beautiful responsive graphics and animations.\nDesktop software is generally not made to utilize lots of cores. For example, computer games will likely benefit from eight cores, but something like 128 cores would be a total waste. Instead, you would want fewer but more powerful cores.\nHow Out-of-Order Execution Works To make a more powerful core we need it to execute more instructions in parallel. Out-of-Order execution (OoOE) is a way to execute more instructions in parallel but without exposing that capability as multiple threads.\nFor an alternative solution read: Very Long Instruction Word Microprocessors\nDevelopers don’t have to code their software specifically to take advantage of OoOE. Seen from the developer’s perspective it just looks like each core runs faster. Please note it is not a direct alternative to hardware threads. You want to use both, depending on the particular problem you are solving.\nTo understand how OoOE works, you need to understand some things about memory. Asking for data in one particular memory location is slow. But the CPU is capable of getting getting many bytes at the same time. Hence getting 1 specific byte in memory, takes no less time than getting 100 more bytes following that byte in memory.\nRobot pickers in a Warehouse for Komplett.no, an online store in Norway Here is an analogy: Consider pickers in a warehouse. Could be the little red robots in the picture above. Moving to multiple locations spread all over takes time. But picking up items from slots adjacent to each other is quick. Computer memory is very similar. You can quickly fetch content of memory cells which are adjecent.\nData is sent across what we call a databus. You can think of it as a road or pipe between memory and different parts of the CPU where data gets pushed through. In reality, it is of course just some copper tracks conducting electricity. If the databus is wide enough you can get multiple bytes at the same time.\nThus CPUs get a whole chunk of instructions at a time to execute. But they are written to be executed one after the other. Modern microprocessors do what we call Out-of-Order execution (OoOE).\nThat means they are able to analyze a buffer of instructions quickly and see which ones depend on which. Look at the simple example below:\n01: mul r1, r2, r3 // r1 ← r2 × r3 02: add r4, r1, 5 // r4 ← r1 + 5 03: add r6, r2, 1 // r6 ← r2 + 1 Multiplication tends to be a slow process. So say it takes multiple clock cycles to perform. The second instruction will simply have to wait because its calculation depends on knowing the result that gets put into the r1 register.\nHowever, the third instruction at line 03 doesn’t depend on calculations from previous instructions. Hence an Out-of-Order processor can begin calculating this instruction in parallel.\nHowever more realistically we are talking about hundreds of instructions. The CPU is able to figure out all the dependencies between these instructions.\nIt analyses the instructions by looking at the inputs to each instruction. Do the inputs depend on output from one or more other instructions? By input and output, we mean registers containing results from previous calculations.\nFor example, the add r4, r1, 5 instruction depends on input from r1 which is produced by mul r1, r2, r3 . We can chain together these relationships into long elaborate graphs that the CPU can work through. The nodes are the instructions and the edges are the registers connecting them.\nThe CPU can analyze such a graph of nodes and determine which instructions it can perform in parallel and where it needs to wait for the results from multiple dependent calculations before carrying on.\nMany instructions will finish early but we cannot make their results official. We cannot commit them; otherwise, we supply the result in the wrong order. To the rest of the world, it has to look as if the instructions were carried out in the same sequence as they were issued.\nLike a stack, the CPU will keep popping done instructions from the top, until hitting an instruction that is not done.\nBasically you got two forms of parallelism: One that the developer must deal with explicitly when writing code and one that is entirely transparent. Of course the latter relies on lots of transistors on the CPU dedicated to Out-of-Order Execution magic. This is not a viable solution for small CPUs with few transistors.\nIt is the superior Out-of-Order execution that is making the Firestorm cores on the M1 kick ass and take names. It is in fact much stronger than anything from Intel or AMD and they may never be able to catch up. To understand why, we need to get into some more technical details.\nISA Instructions vs Micro-Operations Previously I skipped some details on how Out-of-Order Execution (OoOE) works.\nPrograms loaded into memory are made up of machine code instructions designed for specific Instruction-Set Architectures (ISA) such as x86, ARM, PowerPC, 68K, MIPS, AVR etc.\nFor instance the x86 instruction to fetch a number from memory location 24 into a register you may write:\nMOV ax, 24 x86 have registers named ax, bx, cx and dx(remember these are the memory cells inside the CPU you perform operations on). However the equivalent ARM instruction would look like this:\nLDR r0, 24 AMD and Intel processors understand the x86 ISA, while Apple Silicon chips, such as M1, understand the ARM Instruction-Set Architecture (ISA).\nHowever internally the CPU works on an entirely different instruction-set invisible to the programmer. We call these micro-operations (micro-ops or μops). These are the instructions the Out-of-Order hardware works with.\nBut why can’t the OoOE hardware work with regular machine code instructions? Because the CPU needs to attach lots of different information to the instructions to be able to run them in parallel.\nThus while a normal ARM instruction may be 32-bit (32 digits of 0 and 1), a micro-op can be much longer. It contains information about its order.\n01: mul r1, r2, r3 // r1 ← r2 × r3 02: add r4, r1, 5 // r4 ← r1 + 5 03: add r1, r2, 1 // r1 ← r2 + 1 Consider if we run instruction 01: mul and 03: add in parallel. Both store their result in register r1 . If we write the result of instruction 03: add before 01: mul, then instruction 02: add will get the wrong input. Hence it is very important to keep track of instruction order. The order is stored with each micro-op. It also stores e.g. that instruction 02: add depends on output from 01: mul.\nThat is why we cannot have programs written using micro-ops. They contain lots of details specific to the internals of each microprocessor. Two ARM processors could have very different micro-ops internally.\nRead more about CPUs with micro-ops like instructions: Very Long Instruction Word Microprocessors.\nAlso, micro-ops are usually easier to work with for the CPU. Why? Because they each do one simple limited task. Regular ISA instructions can be more complex causing a bunch of stuff to happen and thus frequently translate to multiple micro-ops. Thus the name “micro” comes from the small task they do, not the length of the instruction in memory.\nFor CISC CPUs there is usually no alternative but to use micro-ops otherwise the large complex CISC instructions would make pipelines and OoOE next to impossible to achieve.\nRead more: Why Pipeline a Microprocessor?\nRISC CPUs have a choice. So, for example, smaller ARM CPUs don’t use micro-ops at all. But that also means they cannot do things such as OoOE.\nWhy is AMD and Intel Out-of-Order execution inferior to M1? But you wonder, why does any of this matter? Why is this detail important to know to understand why Apple has the upper hand on AMD and Intel?\nIt is because the ability to run fast depends on how quickly you can fill up a buffer of micro-operations. If you got a large buffer then the OoOE hardware will have an easier time to locate two or more instructions which it can run in parallel. But there is no point in having a large instruction buffer if you cannot refill it fast enough after instructions get picked and executed.\nThe ability to refill the instruction buffer quickly relies on the ability to quickly chop machine code instruction into micro-ops. The hardware units that does this are called decoders.\nAnd finally we get to the killer feature of the M1. The biggest and meanest Intel and AMD microprocessor have a total of four decoders busy cutting machine code instructions into micro-ops.\nBut this is no match for the M1, which has an absolutely unheard of number of decoders: Eight. Significantly more than anybody else in the industry. That means it can fill up the instruction buffer much quicker.\nTo deal with this the M1 also has an instruction buffer which is 3x times larger than what is normal in the industry.\nWhy can’t Intel and AMD add more instruction decoders? This is where we finally see the revenge of RISC, and where the fact that the M1 Firestorm core has an ARM RISC architecture begins to matter.\nYou see, an x86 instruction can be anywhere from 1–15 bytes long. RISC instructions have fixed length. Every ARM instruction is 4 bytes long. Why is that relevant in this case?\nBecause splitting up a stream of bytes into instructions to feed into eight different decoders in parallel becomes trivial if every instruction has the same length.\nHowever, on an x86 CPU, the decoders have no clue where the next instruction starts. It has to actually analyze each instruction in order to see how long it is.\nThe brute force way Intel and AMD deal with this is by simply attempting to decode instructions at every possible starting point. That means x86 chips have to deal with lots of wrong guesses and mistakes which has to be discarded. This creates such a convoluted and complicated decoder stage that it is really hard to add more decoders. But for Apple, it is trivial in comparison to keep adding more.\nIn fact, adding more causes so many other problems that four decoders according to AMD itself is basically an upper limit for them.\nThis is what allows the M1 Firestorm cores to essentially process twice as many instructions as AMD and Intel CPUs at the same clock frequency.\nOne could argue as a counterpoint that CISC instructions turn into more micro-ops. For instance if every x86 instruction turned into 2 micro-ops while every ARM instruction turned into 1 micro-op, then four x86 decoders would produce the same number of micro-ops per clock cycle as an ARM CPU with 8 decoders.\nExcept this is not the case in the real world. Highly optimized x86 code rarely uses complex CISC instructions, which would translate into many micro-ops. In fact most will only translate into 1 micro-op.\nHowever all these simple x86 instructions don’t help Intel or AMD. Because even if those 15 byte long instructions are rare, the decoders have to be made to handle them. This incurs complexity that blocks AMD and Intel from adding more decoders.\nBut AMDs Zen3 cores are still faster right? As far as I remember from performance benchmarks, the newest AMD CPU cores, the ones called Zen3 are slightly faster than Firestorm cores. But here is the kicker: That only happens because the Zen3 cores are clocked at 5 GHz. Firestorm cores are clocked at 3.2 GHz. The Zen3 is just barely squeezing past Firestorm despite having almost 60% higher clock frequency.\nSo why doesn’t Apple increase the clock frequency too? Because higher clock frequency makes the chips run hotter. That is one of Apple’s key selling points. Their computers — unlike Intel and AMD offerings — barely need cooling.\nIn essence, one could say Firestorm cores really are superior to Zen3 cores. Zen3 only manages to stay in the game by drawing a lot more current and getting a lot hotter. Something Apple simply chooses not to do.\nIf Apple wants higher performance they are simply going to add more cores. That lets them keep watt usage down while offering more performance.\nThe future It seems AMD and Intel have painted themselves into a corner on two fronts:\nThey don’t have a business model that makes it easy to pursue heterogeneous computing and SoC designs. Their legacy x86 CISC instruction set is coming back to haunt them, making it hard to improve OoO performance. Read more: Intel, ARM and the Innovators Dilemma\nIt doesn’t mean game over. They can increase the clock frequency and use more cooling, throw in more cores, beef up the CPU caches, etc. But they are both at a disadvantage. Intel is in the worst situation, as their cores are already soundly beaten by Firestorm, and they have weak GPUs to integrate with an SoC solution.\nThe problem with throwing in more cores is that for typical desktop workloads you reach diminishing returns with too many cores. Sure lots of cores are great for servers.\nHowever here companies such as Amazon and Ampere are attacking with monster CPUs with 128 cores. This is like fighting the western and eastern front at the same time.\nBut fortunately for AMD and Intel, Apple doesn’t sell their chips on the market. So PC users will simply have to put up with whatever they are offering. PC users may jump ship, but that is a slow process. You don’t leave immediately a platform you are heavily invested in.\nBut young professionals, with money to burn without too deep investments in any platform, may increasingly turn to Apple in the future, beefing up their hold on the premium market and consequently their share of the total profit in the PC market.\n",
+  "wordCount" : "5549",
+  "inLanguage": "en",
+  "datePublished": "2021-01-29T00:00:00Z",
+  "dateModified": "2021-01-29T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Ashvik Dubey"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.ashvikdubey.com/post/whyisapplesm1chipsofast/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ashvik Dubey",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.ashvikdubey.com/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+
+
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: #1d1e20;
+                --entry: #2e2e33;
+                --primary: rgba(255, 255, 255, 0.84);
+                --secondary: rgba(255, 255, 255, 0.56);
+                --tertiary: rgba(255, 255, 255, 0.16);
+                --content: rgba(255, 255, 255, 0.74);
+                --hljs-bg: #2e2e33;
+                --code-bg: #37383e;
+                --border: #333;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+    </style>
+
+</noscript>
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://example.ashvikdubey.com/" accesskey="h" title="Ashvik Dubey (Alt + H)">Ashvik Dubey</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                
+                
+            </span>
+        </div>
+        <ul id="menu" onscroll="menu_on_scroll()">
+            <li>
+                <a href="https://example.ashvikdubey.com/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.ashvikdubey.com/tags/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://example.ashvikdubey.com/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li></ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+<div class="breadcrumbs">
+
+    <a href="https://example.ashvikdubey.com/">Home</a>&nbsp;»&nbsp;<a href="https://example.ashvikdubey.com/post/">Posts</a>
+</div>
+
+    <h1 class="post-title">
+      Why Is Apple&#39;s M1 Chip So Fast?
+    </h1>
+    <div class="post-meta">
+
+January 29, 2021&nbsp;·&nbsp;27 min&nbsp;·&nbsp;Ashvik Dubey
+
+|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/post%5cWhyIsApplesM1ChipSoFast.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+</div>
+  </header> 
+
+  <div class="toc">
+    <details >
+      <summary accesskey="c" title="(Alt + C)">
+        <div class="details">Table of Contents</div>
+      </summary>
+      <div class="inner">
+      </div>
+    </details>
+  </div>
+  <div class="post-content">
+<p>On YouTube, I watched a Mac user who had bought an iMac last year. It was maxed out with 40 GB of RAM costing him about $4,000. He watched in disbelief how his hyperexpensive iMac was being demolished by his new M1 Mac Mini, which he had paid a measly $700 for.</p>
+<p>In real-world test after test, the M1 Macs are not merely inching past top-of-the-line Intel Macs, they are destroying them. In disbelief, people have started asking how on earth this is possible?</p>
+<p>If you are one of those people, you have come to the right place. Here I plan to break it down into digestible pieces exactly what it is that Apple has done with the M1. Specifically the questions I think a lot of people have are:</p>
+<p>What are the technical reasons this M1 chip is so fast?
+Has Apple made some really exotic technical choices to make this possible?
+How easy will it be for the competition such as Intel and AMD to pull the same technical tricks?
+Sure you could try to Google this, but if you try to learn what Apple has done beyond the superficial explanations, you will quickly get buried in highly technical jargon such as M1 using very wide instruction decoders, enormous reorder buffer (ROB), etc. Unless you are a CPU hardware geek, a lot of this will simply be gobbledygook.</p>
+<p>What is a microprocessor (CPU)?</p>
+<p>Normally when speaking of chips from Intel and AMD we talk about central processing units (CPUs) or microprocessors. These pull in instructions from memory. Then each instruction is typically carried out in sequence.</p>
+<p>A very basic RISC CPU, not the M1. Instructions are moved from memory along blue arrows into the instruction register. There a decoder figures out what the instruction is and enables different parts of the CPU through the red control lines. The ALU adds and subtracts numbers placed in the registers.
+A CPU at its most basic level is a device with a number of named memory cells called registers and a number of computational units called arithmetic logic units (ALU). The ALUs perform things like addition, subtraction, and other basic math operations. However, these are only connected to the CPU registers. If you want to add up two numbers, you have to get those two numbers from memory and into two registers in the CPU.</p>
+<p>Here are some examples of typical instructions that a RISC CPU as found on the M1 carries out.</p>
+<p>load r1, 150
+load r2, 200
+add  r1, r2
+store r1, 310
+Here r1 and r2 are the registers I talked about. Modern RISC CPUs cannot do operations on numbers that are not in a register like this. For example, it cannot add two numbers residing in RAM in two different locations. Instead, it has to pull these two numbers into a separate register. That is what we do in this simple example. We pull in the number at memory location 150 in the RAM and put it into register r1 in the CPU. Next, we put the contents of address 200 into register r2. Only then can the numbers be added with the add r1, r2 instruction.</p>
+<p>An old mechanical calculator with two registers: the accumulator and input register. Modern CPUs typically have more than a dozen registers, and they are electronic rather than mechanical.
+The concept of registers is old. For example, on this old mechanical calculator, the register is what holds the numbers you are adding. Likely the origin of the term cash register. The register is where you registered input numbers.</p>
+<p>The M1 is not a CPU!
+But here is a very important thing to understand about the M1:</p>
+<p>The M1 is not a CPU, it is a whole system of multiple chips put into one large silicon package. The CPU is just one of these chips.</p>
+<p>Basically, the M1 is one whole computer onto a chip. The M1 contains a CPU, graphical processing unit (GPU), memory, input and output controllers, and many more things making up a whole computer. This is what we call a system on a chip (SoC).</p>
+<p>M1 is a system on a chip. Meaning all the parts making up a computer are placed on one silicon chip.
+Today if you buy a chip — whether from Intel or AMD — you actually get what amounts to multiple microprocessors in one package. In the past computers would have multiple physically separate chips on the motherboard of the computer.</p>
+<p>Example of a computer motherboard. Memory, CPU, graphics cards, IO controllers, network cards, and many other components can be attached to the motherboard to communicate with each other.
+However because we are able to put so many transistors on a silicon die today, companies such as Intel and AMD began putting multiple microprocessors onto one chip. Today we refer to these chips as CPU cores. One core is basically a full independent chip that can read instructions from memory and perform calculations.</p>
+<p>A microchip with multiple CPU cores.
+This has for a long time been the name of the game in terms of increasing performance: Just add more general-purpose CPU cores. But there is a disturbance in the force. There is one player in the CPU market which is deviating from this trend.</p>
+<p>Apple’s not so secret heterogeneous computing strategy
+Instead of adding ever more general-purpose CPU cores, Apple has followed another strategy: They have started adding ever more specialized chips doing a few specialized tasks. The benefit of this is that specialized chips tend to be able to perform their tasks significantly faster using much less electric current than a general-purpose CPU core.</p>
+<p>This is not entirely new knowledge. For many years already specialized chips such as the graphical processing units (GPUs) have been sitting in Nvidia and AMD graphics cards performing operations related to graphics much faster than general-purpose CPUs.</p>
+<p>What Apple has done is simply to take a more radical shift toward this direction. Rather than just having general-purpose cores and memory, the M1 contains a wide variety of specialized chips:</p>
+<p>Central processing unit (CPU) — the “brains” of the SoC. Runs most of the code of the operating system and your apps.
+Graphics processing unit (GPU) — handles graphics-related tasks, such as visualizing an app’s user interface and 2D/3D gaming.
+Image processing unit (ISP) — can be used to speed up common tasks done by image processing applications.
+Digital signal processor (DSP) — handles more mathematically intensive functions than a CPU. Includes decompressing music files.
+Neural processing unit (NPU) — used in high-end smartphones to accelerate machine learning (A.I.) tasks. These include voice recognition and camera processing.
+Video encoder/decoder — handles the power-efficient conversion of video files and formats.
+Secure Enclave — encryption, authentication, and security.
+Unified memory — allows the CPU, GPU, and other cores to quickly exchange information.
+This is part of the reason why a lot of people working on images and video editing with the M1 Macs are seeing such speed improvements. A lot of the tasks they do can run directly on specialized hardware. That is what allows a cheap M1 Mac Mini to encode a large video file without breaking a sweat while an expensive iMac has all its fans going full blast and still cannot keep up.</p>
+<p>Read more about heterogeneous computing: Apple M1 foreshadows Rise of RISC-V.</p>
+<p>In blue you see multiple CPU cores accessing memory, and in green you see large numbers of GPU cores accessing memory.
+What is Special About Apple’s Unified Memory Architecture?
+Apple’s “Unified Memory Architecture” (UMA) is a bit tricky to wrap your head around (I got it wrong first time I wrote it down here).</p>
+<p>To explain why, we need to take a few steps back.</p>
+<p>For a long time cheap computer systems have had the CPU and GPU integrated into the same chip (same silicon die). These have been famously slow. In the past saying “integrated graphics” was essentially the same as saying “slow graphics.”</p>
+<p>These where slow for severals reasons:</p>
+<p>Separate areas of this memory got reserved for the CPU and GPU. If the CPU had a chunk of data it wanted the GPU to use, it couldn’t say “here have some of my memory.” No, the CPU had to explicitly copy the whole chunk of data over the memory area controlled by the GPU.</p>
+<p>CPUs don’t need a lot of data served, but they want it fast.
+CPUs and GPUs don’t want their memory served the same way. Let us do a silly food analogy: CPUs want their plate of data served very quickly by the waiter, but they are totally cool with small portion sizes. Imagine a fancy French restaurant with waiters on rollerblades to serve you really quickly.</p>
+<p>This is how your GPU wants their memory: huge portions. The more the merrier.
+GPUs in contrast are cool with the waiter being slow to serve the data. But the GPUs want enormous servings. They gobble massive amounts of data because they are massive parallel machines, that can chew through lots of data in parallel. Imagine an American junk food place, where the food takes some time to arrive because they are pushing a whole trolley of food to your seating area.</p>
+<p>With such different needs, putting CPUs and GPUs on the same physical chip was not a great idea. The GPUs would sit there starving while given small French servings. The result was that there was no point in putting powerful GPUs on an SoC. The tiny portions of data served up, could easily be chewed up by a weak little GPU.</p>
+<p>The second problem was that large GPUs produce a lot of heat and thus you cannot integrate them with the CPU without getting problems ridding yourself of the heat produced. Thus discrete graphics cards tend to look like the one below: Large beasts with massive cooling fans. They have special dedicated memory designed to serve the greedy cards massive amounts of data.</p>
+<p>GeForce RTX 3080
+That is why these cards have high performance. But they have an achilles heel: Whenever they have to get data from the memory used by the CPU, this happens over a set of copper traces on the computer motherboard called a PCIe bus. Try chugging water through a super thin straw. It may get to your mouth fast, but the throughput is totally inadequate.</p>
+<p>Apple’s Unified Memory Architecture tries to solve all these problems without having the disadvantages of old school shared memory. They achieve this in the following ways:</p>
+<p>There is no special area reserved just for the CPU or just the GPU. Memory is allocated to both processors. They can both use the same memory. No copying is needed.
+Apple uses memory which serves both large chunks of data and serves it fast. In computer speak that is called low latency and high throughput. Thus the need to be connected to separate types of memory is removed.
+Apple has gotten the watt usage of the GPU down, so that a relatively powerful GPU can be integrated without overheating the SoC. And ARM chips produce less heat, allowing the GPU to have a higher heat budget than a GPU on the same silicon die as an AMD or Intel CPU.
+Some will say unified memory is not entirely new. It is true that different systems have had it in the past. But then the difference in memory requirements may not have been as large. Secondly what Nvidia calls Unified Memory is not really the same thing. In the Nvidea world Unified Memory simply means that there is software and hardware which takes care of automatically copying data back and forth between the separate CPU and GPU memory. Thus from a programmers perspective Apple and Nvidia Unified Memory may look the same, but it is not the same in a physical sense.</p>
+<p>There is of course a tradeoff in this strategy. Getting this high bandwidth memory (big servings) require full integration which means you take away the opportunity from customers to upgrade their memory. But Apple seeks to minimize this problem by making the communication with the SSD disks so fast, that they essentially work like old fashion memory.</p>
+<p>How Mac’s used GPUs before unified memory. There was even an option of having graphics cards outside the computer using a Thunderbolt 3 cable. There is some speculation that this may still be possible in the future.
+If SoCs Are So Smart, Why Don’t Intel and AMD Copy This Strategy?
+If what Apple is doing is so smart, why is not everybody doing it? To some extent they are. Other ARM chip makers are increasingly putting in specialized hardware.</p>
+<p>AMD has also started putting stronger GPUs on some of their chips and moving gradually toward some form of SoC with the accelerated processing units (APU) which are basically CPU cores and GPU cores placed on the same silicon die.</p>
+<p>AMD Ryzen Accelerated Processing Unit (APU) which combines CPU and GPU (Radeon Vega) on one silicon chip. Does however not contain other co-processors, IO-controllers, or unified memory.
+Yet there are important reasons why they cannot do this. An SoC is essentially a whole computer on a chip. That makes it a more natural fit for an actual computer-maker, such as HP and Dell. Let me clarify with a silly car analogy: If your business model is to build and sell car engines, it would be an unusual leap to begin manufacturing and selling whole cars.</p>
+<p>For ARM, in contrast, this isn’t an issue. Computer makers such as Dell or HP could simply license ARM intellectual property and buy IP for other chips, to add whatever specialized hardware they think their SoC should have. Next, they ship the finished design over to a semiconductor foundry such as GlobalFoundries or TSMC, which manufactures chips for AMD and Apple today.</p>
+<p>TSMC semiconductor foundry in Taiwan. TSMC manufactures chips for other companies such as AMD, Apple, Nvidia, and Qualcomm.
+Here we get a big problem with the Intel and AMD business model. Their business models are based on selling general-purpose CPUs, which people just slot onto a large PC motherboard. Thus computer-makers can simply buy motherboards, memory, CPUs, and graphics cards from different vendors and integrate them into one solution.</p>
+<p>But we are quickly moving away from that world. In the new SoC world, you don’t assemble physical components from different vendors. Instead, you assemble IP (intellectual property) from different vendors. You buy the design for graphics cards, CPUs, modems, IO controllers, and other things from different vendors and use that to design an SoC in-house. Then you get a foundry to manufacture this.</p>
+<p>Now you got a big problem, because neither Intel, AMD, or Nvidia are going to license their intellectual property to Dell or HP for them to make an SoC for their machines.</p>
+<p>Sure Intel and AMD may simply begin to sell whole finished SoCs. But what are these to contain? PC-makers may have different ideas of what they should contain. You potentially get a conflict between Intel, AMD, Microsoft, and PC-makers about what sort of specialized chips should be included because these will need software support.</p>
+<p>For Apple this is simple. They control the whole widget. They give you, for example, the Core ML library for developers to write machine learning stuff. Whether Core ML runs on Apple’s CPU or the Neural Engine is an implementation detail developers don’t have to care about.</p>
+<p>The fundamental challenge of making any CPU run fast
+So heterogeneous computing is part of the reason but not the sole reason. The fast general-purpose CPU cores on the M1, called Firestorm, are genuinely fast. This is a major deviation from ARM CPU cores in the past which tended to be very weak compared to AMD and Intel cores.</p>
+<p>Firestorm, in contrast, beats most Intel cores and almost beats the fastest AMD Ryzen cores. Conventional wisdom said that was not going to happen.</p>
+<p>Before talking about what makes Firestorm fast it helps to understand what the core idea of making a fast CPU is really about.</p>
+<p>In principle you accomplish in a combination of two strategies:</p>
+<p>Perform more instructions in a sequence faster.
+Perform lots of instructions in parallel.
+Back in the ’80s, it was easy. Just increase the clock frequency and the instructions would finish faster. Every clock cycle is when the computer does something. But this something can be quite little. Thus an instruction may require multiple clock cycles to finish because it is made up of several smaller tasks.</p>
+<p>However, today increasing the clock frequency is next to impossible. That is the whole “End of Moore’s Law” that people have been harping on for over a decade now.</p>
+<p>Thus it is really about executing as many instructions as possible in parallel.</p>
+<p>Multi-core or Out-of-Order processors?
+There are two approaches to this.</p>
+<p>Add more CPU cores. Each core works independent and in parallel.
+Make each CPU core execute multiple instructions in parallel.
+For a software developer, adding cores is like adding threads. Every CPU core is like a hardware thread.</p>
+<p>If you don’t know what a thread is, then you can think of it as the process of carrying out a task. With two cores, a CPU can carry out two separate tasks concurrently: two threads. The tasks could be described as two separate programs stores in memory or it could actually be the same program performed twice. Each thread needs some bookkeeping, such as where in a sequence of program instructions the thread is currently at. Each thread may store temporary results which should be kept separate.</p>
+<p>In principle, a processor can have just one core and run multiple threads. In this case, it simply halts one thread and stores current progress before switching to another. Later it switches back. This doesn’t bring much of a performance enhancement unless the thread has to frequently halt to:</p>
+<p>Wait for input from the user
+Data from a slow network connection, etc.
+Let us call these software threads. Hardware threads mean you have actual physical CPU cores at your disposal to speed up things.</p>
+<p>The problem with threads is that software developers have to write so called multi-threaded code. That is often difficult. In the past, this was some of the hardest code to write. However making server software multi-threaded tends to be easy. It is simply a matter of handling each user request on a separate thread. Thus in this case having lots of cores, is an obvious advantage. Especially for cloud services.</p>
+<p>The Ampere Altra Max ARM CPU with 128 cores designed for cloud computing, where a lot of hardware threads is a benefit.
+That is the reason why you see ARM CPU-makers such as Ampere making CPUs such as the Altra Max which has a crazy 128 cores. This chip is specifically made for the cloud. You don’t need crazy single-core performance, because in the cloud it is all about having as many threads as possible per watt to handle as many concurrent users as possible.</p>
+<p>Read more about ARM CPUs with many cores: Are Servers Next for Apple?</p>
+<p>Apple, in contrast, is on the complete opposite end of the spectrum. They make single-user devices. Lots of threads is not an advantage. Their devices are used for gaming, video editing, development, etc. They want desktops with beautiful responsive graphics and animations.</p>
+<p>Desktop software is generally not made to utilize lots of cores. For example, computer games will likely benefit from eight cores, but something like 128 cores would be a total waste. Instead, you would want fewer but more powerful cores.</p>
+<p>How Out-of-Order Execution Works
+To make a more powerful core we need it to execute more instructions in parallel. Out-of-Order execution (OoOE) is a way to execute more instructions in parallel but without exposing that capability as multiple threads.</p>
+<p>For an alternative solution read: Very Long Instruction Word Microprocessors</p>
+<p>Developers don’t have to code their software specifically to take advantage of OoOE. Seen from the developer’s perspective it just looks like each core runs faster. Please note it is not a direct alternative to hardware threads. You want to use both, depending on the particular problem you are solving.</p>
+<p>To understand how OoOE works, you need to understand some things about memory. Asking for data in one particular memory location is slow. But the CPU is capable of getting getting many bytes at the same time. Hence getting 1 specific byte in memory, takes no less time than getting 100 more bytes following that byte in memory.</p>
+<p>Robot pickers in a Warehouse for Komplett.no, an online store in Norway
+Here is an analogy: Consider pickers in a warehouse. Could be the little red robots in the picture above. Moving to multiple locations spread all over takes time. But picking up items from slots adjacent to each other is quick. Computer memory is very similar. You can quickly fetch content of memory cells which are adjecent.</p>
+<p>Data is sent across what we call a databus. You can think of it as a road or pipe between memory and different parts of the CPU where data gets pushed through. In reality, it is of course just some copper tracks conducting electricity. If the databus is wide enough you can get multiple bytes at the same time.</p>
+<p>Thus CPUs get a whole chunk of instructions at a time to execute. But they are written to be executed one after the other. Modern microprocessors do what we call Out-of-Order execution (OoOE).</p>
+<p>That means they are able to analyze a buffer of instructions quickly and see which ones depend on which. Look at the simple example below:</p>
+<p>01: mul r1, r2, r3    // r1 ← r2 × r3
+02: add r4, r1, 5     // r4 ← r1 + 5
+03: add r6, r2, 1     // r6 ← r2 + 1
+Multiplication tends to be a slow process. So say it takes multiple clock cycles to perform. The second instruction will simply have to wait because its calculation depends on knowing the result that gets put into the r1 register.</p>
+<p>However, the third instruction at line 03 doesn’t depend on calculations from previous instructions. Hence an Out-of-Order processor can begin calculating this instruction in parallel.</p>
+<p>However more realistically we are talking about hundreds of instructions. The CPU is able to figure out all the dependencies between these instructions.</p>
+<p>It analyses the instructions by looking at the inputs to each instruction. Do the inputs depend on output from one or more other instructions? By input and output, we mean registers containing results from previous calculations.</p>
+<p>For example, the add r4, r1, 5 instruction depends on input from r1 which is produced by mul r1, r2, r3 . We can chain together these relationships into long elaborate graphs that the CPU can work through. The nodes are the instructions and the edges are the registers connecting them.</p>
+<p>The CPU can analyze such a graph of nodes and determine which instructions it can perform in parallel and where it needs to wait for the results from multiple dependent calculations before carrying on.</p>
+<p>Many instructions will finish early but we cannot make their results official. We cannot commit them; otherwise, we supply the result in the wrong order. To the rest of the world, it has to look as if the instructions were carried out in the same sequence as they were issued.</p>
+<p>Like a stack, the CPU will keep popping done instructions from the top, until hitting an instruction that is not done.</p>
+<p>Basically you got two forms of parallelism: One that the developer must deal with explicitly when writing code and one that is entirely transparent. Of course the latter relies on lots of transistors on the CPU dedicated to Out-of-Order Execution magic. This is not a viable solution for small CPUs with few transistors.</p>
+<p>It is the superior Out-of-Order execution that is making the Firestorm cores on the M1 kick ass and take names. It is in fact much stronger than anything from Intel or AMD and they may never be able to catch up. To understand why, we need to get into some more technical details.</p>
+<p>ISA Instructions vs Micro-Operations
+Previously I skipped some details on how Out-of-Order Execution (OoOE) works.</p>
+<p>Programs loaded into memory are made up of machine code instructions designed for specific Instruction-Set Architectures (ISA) such as x86, ARM, PowerPC, 68K, MIPS, AVR etc.</p>
+<p>For instance the x86 instruction to fetch a number from memory location 24 into a register you may write:</p>
+<p>MOV ax, 24
+x86 have registers named ax, bx, cx and dx(remember these are the memory cells inside the CPU you perform operations on). However the equivalent ARM instruction would look like this:</p>
+<p>LDR r0, 24
+AMD and Intel processors understand the x86 ISA, while Apple Silicon chips, such as M1, understand the ARM Instruction-Set Architecture (ISA).</p>
+<p>However internally the CPU works on an entirely different instruction-set invisible to the programmer. We call these micro-operations (micro-ops or μops). These are the instructions the Out-of-Order hardware works with.</p>
+<p>But why can’t the OoOE hardware work with regular machine code instructions? Because the CPU needs to attach lots of different information to the instructions to be able to run them in parallel.</p>
+<p>Thus while a normal ARM instruction may be 32-bit (32 digits of 0 and 1), a micro-op can be much longer. It contains information about its order.</p>
+<p>01: mul r1, r2, r3    // r1 ← r2 × r3
+02: add r4, r1, 5     // r4 ← r1 + 5
+03: add r1, r2, 1     // r1 ← r2 + 1
+Consider if we run instruction 01: mul and 03: add in parallel. Both store their result in register r1 . If we write the result of instruction 03: add before 01: mul, then instruction 02: add will get the wrong input. Hence it is very important to keep track of instruction order. The order is stored with each micro-op. It also stores e.g. that instruction 02: add depends on output from 01: mul.</p>
+<p>That is why we cannot have programs written using micro-ops. They contain lots of details specific to the internals of each microprocessor. Two ARM processors could have very different micro-ops internally.</p>
+<p>Read more about CPUs with micro-ops like instructions: Very Long Instruction Word Microprocessors.</p>
+<p>Also, micro-ops are usually easier to work with for the CPU. Why? Because they each do one simple limited task. Regular ISA instructions can be more complex causing a bunch of stuff to happen and thus frequently translate to multiple micro-ops. Thus the name “micro” comes from the small task they do, not the length of the instruction in memory.</p>
+<p>For CISC CPUs there is usually no alternative but to use micro-ops otherwise the large complex CISC instructions would make pipelines and OoOE next to impossible to achieve.</p>
+<p>Read more: Why Pipeline a Microprocessor?</p>
+<p>RISC CPUs have a choice. So, for example, smaller ARM CPUs don’t use micro-ops at all. But that also means they cannot do things such as OoOE.</p>
+<p>Why is AMD and Intel Out-of-Order execution inferior to M1?
+But you wonder, why does any of this matter? Why is this detail important to know to understand why Apple has the upper hand on AMD and Intel?</p>
+<p>It is because the ability to run fast depends on how quickly you can fill up a buffer of micro-operations. If you got a large buffer then the OoOE hardware will have an easier time to locate two or more instructions which it can run in parallel. But there is no point in having a large instruction buffer if you cannot refill it fast enough after instructions get picked and executed.</p>
+<p>The ability to refill the instruction buffer quickly relies on the ability to quickly chop machine code instruction into micro-ops. The hardware units that does this are called decoders.</p>
+<p>And finally we get to the killer feature of the M1. The biggest and meanest Intel and AMD microprocessor have a total of four decoders busy cutting machine code instructions into micro-ops.</p>
+<p>But this is no match for the M1, which has an absolutely unheard of number of decoders: Eight. Significantly more than anybody else in the industry. That means it can fill up the instruction buffer much quicker.</p>
+<p>To deal with this the M1 also has an instruction buffer which is 3x times larger than what is normal in the industry.</p>
+<p>Why can’t Intel and AMD add more instruction decoders?
+This is where we finally see the revenge of RISC, and where the fact that the M1 Firestorm core has an ARM RISC architecture begins to matter.</p>
+<p>You see, an x86 instruction can be anywhere from 1–15 bytes long. RISC instructions have fixed length. Every ARM instruction is 4 bytes long. Why is that relevant in this case?</p>
+<p>Because splitting up a stream of bytes into instructions to feed into eight different decoders in parallel becomes trivial if every instruction has the same length.</p>
+<p>However, on an x86 CPU, the decoders have no clue where the next instruction starts. It has to actually analyze each instruction in order to see how long it is.</p>
+<p>The brute force way Intel and AMD deal with this is by simply attempting to decode instructions at every possible starting point. That means x86 chips have to deal with lots of wrong guesses and mistakes which has to be discarded. This creates such a convoluted and complicated decoder stage that it is really hard to add more decoders. But for Apple, it is trivial in comparison to keep adding more.</p>
+<p>In fact, adding more causes so many other problems that four decoders according to AMD itself is basically an upper limit for them.</p>
+<p>This is what allows the M1 Firestorm cores to essentially process twice as many instructions as AMD and Intel CPUs at the same clock frequency.</p>
+<p>One could argue as a counterpoint that CISC instructions turn into more micro-ops. For instance if every x86 instruction turned into 2 micro-ops while every ARM instruction turned into 1 micro-op, then four x86 decoders would produce the same number of micro-ops per clock cycle as an ARM CPU with 8 decoders.</p>
+<p>Except this is not the case in the real world. Highly optimized x86 code rarely uses complex CISC instructions, which would translate into many micro-ops. In fact most will only translate into 1 micro-op.</p>
+<p>However all these simple x86 instructions don’t help Intel or AMD. Because even if those 15 byte long instructions are rare, the decoders have to be made to handle them. This incurs complexity that blocks AMD and Intel from adding more decoders.</p>
+<p>But AMDs Zen3 cores are still faster right?
+As far as I remember from performance benchmarks, the newest AMD CPU cores, the ones called Zen3 are slightly faster than Firestorm cores. But here is the kicker: That only happens because the Zen3 cores are clocked at 5 GHz. Firestorm cores are clocked at 3.2 GHz. The Zen3 is just barely squeezing past Firestorm despite having almost 60% higher clock frequency.</p>
+<p>So why doesn’t Apple increase the clock frequency too? Because higher clock frequency makes the chips run hotter. That is one of Apple’s key selling points. Their computers — unlike Intel and AMD offerings — barely need cooling.</p>
+<p>In essence, one could say Firestorm cores really are superior to Zen3 cores. Zen3 only manages to stay in the game by drawing a lot more current and getting a lot hotter. Something Apple simply chooses not to do.</p>
+<p>If Apple wants higher performance they are simply going to add more cores. That lets them keep watt usage down while offering more performance.</p>
+<p>The future
+It seems AMD and Intel have painted themselves into a corner on two fronts:</p>
+<p>They don’t have a business model that makes it easy to pursue heterogeneous computing and SoC designs.
+Their legacy x86 CISC instruction set is coming back to haunt them, making it hard to improve OoO performance.
+Read more: Intel, ARM and the Innovators Dilemma</p>
+<p>It doesn’t mean game over. They can increase the clock frequency and use more cooling, throw in more cores, beef up the CPU caches, etc. But they are both at a disadvantage. Intel is in the worst situation, as their cores are already soundly beaten by Firestorm, and they have weak GPUs to integrate with an SoC solution.</p>
+<p>The problem with throwing in more cores is that for typical desktop workloads you reach diminishing returns with too many cores. Sure lots of cores are great for servers.</p>
+<p>However here companies such as Amazon and Ampere are attacking with monster CPUs with 128 cores. This is like fighting the western and eastern front at the same time.</p>
+<p>But fortunately for AMD and Intel, Apple doesn’t sell their chips on the market. So PC users will simply have to put up with whatever they are offering. PC users may jump ship, but that is a slow process. You don’t leave immediately a platform you are heavily invested in.</p>
+<p>But young professionals, with money to burn without too deep investments in any platform, may increasingly turn to Apple in the future, beefing up their hold on the premium market and consequently their share of the total profit in the PC market.</p>
+
+</div>
+  <footer class="post-footer">
+
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why Is Apple&#39;s M1 Chip So Fast? on twitter"
+        href="https://twitter.com/intent/tweet/?text=Why%20Is%20Apple%27s%20M1%20Chip%20So%20Fast%3f&amp;url=https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f&amp;hashtags=">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why Is Apple&#39;s M1 Chip So Fast? on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f&amp;title=Why%20Is%20Apple%27s%20M1%20Chip%20So%20Fast%3f&amp;summary=Why%20Is%20Apple%27s%20M1%20Chip%20So%20Fast%3f&amp;source=https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why Is Apple&#39;s M1 Chip So Fast? on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f&title=Why%20Is%20Apple%27s%20M1%20Chip%20So%20Fast%3f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why Is Apple&#39;s M1 Chip So Fast? on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why Is Apple&#39;s M1 Chip So Fast? on whatsapp"
+        href="https://api.whatsapp.com/send?text=Why%20Is%20Apple%27s%20M1%20Chip%20So%20Fast%3f%20-%20https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Why Is Apple&#39;s M1 Chip So Fast? on telegram"
+        href="https://telegram.me/share/url?text=Why%20Is%20Apple%27s%20M1%20Chip%20So%20Fast%3f&amp;url=https%3a%2f%2fexample.ashvikdubey.com%2fpost%2fwhyisapplesm1chipsofast%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main><footer class="footer">
+    <span>&copy; 2021 <a href="https://example.ashvikdubey.com/">Ashvik Dubey</a></span>
+    <span>&middot;</span>
+    <span>Powered by <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a></span>
+    <span>&middot;</span>
+    <span>Theme <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+
+
+<script defer src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<script>
+    window.onload = function () {
+        if (localStorage.getItem("menu-scroll-position")) {
+            document.getElementById('menu').scrollLeft = localStorage.getItem("menu-scroll-position");
+        }
+    }
+
+    function menu_on_scroll() {
+        localStorage.setItem("menu-scroll-position", document.getElementById('menu').scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+</body>
+
+</html>

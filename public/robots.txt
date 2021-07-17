@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://example.ashvikdubey.com/sitemap.xml
