@@ -1,0 +1,20 @@
+body {background-color: #EAF6F6; text-align: center; font-family: 'Merriweather', serif;}
+h1 {font-size: 562.5%; margin: 0px auto 0  auto; font-family: 'Sacramento', cursive; color: #2ecc71;}
+h2 {font-family: 'Montserrat', sans-serif; font-size: 1.25rem; padding-left: 50px; padding-right: 50px; font-weight: bold;}
+h3 {font-family: 'Montserrat', sans-serif; color: #3498db;}
+h4 {font-size: 300%; margin: 0px auto 0  auto; font-family: 'Merriweather', sans-serif; color: #2ecc71;}
+hr {border: dotted #FFFFFF 6px; border-bottom: none; width: 4%; margin: 100px auto;}
+a{color: #11999E; font-family: 'Montserrat', sans-serif; margin: 10px 20px; text-decoration: none;}
+img {}
+
+a:hover {color: #EAF6F6;}
+
+.copyright {color: #EAF6F6; font-size: 0.75rem; padding: 20px 0;}
+.top-container {background-color: #E4F9F5; position: relative; padding-top: 100px;}
+.middle-container {background-color: #E4F9F5}
+.bottom-container {background-color: #66BFBF; padding: 50px 0 20px;}
+.top-cloud {position: absolute; right: 300px; top: 40px;}
+.bottom-cloud {position: absolute; left: 250px; bottom: 1125px;}
+.footer-link {color: #11999E}
+.skills {width: 5%;}
+border: 2px solid white; border-radius: 5px;
