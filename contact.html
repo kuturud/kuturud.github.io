@@ -6,16 +6,29 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <p>If you ever want to get in touch, use the form below, or feel free to email me at ashvikdubey@gmail.com. I try my best to reply to things but there sadly aren't enough hours to respond to everyone. 😭</p>
-        <form action="mailto:ashvikdubey@gmail.com" method="post" enctype="text/plain">
-            <hr>
-            <label>Your Name: </label>
-            <input type="text" name="Your Name: "><br>
-            <label>Your Email Address: </label>
-            <input type="email" name="Your Email Address: "><br>
-            <label>Your Message: </label><br>
-            <textarea name="Your Message: " id="" cols="30" rows="10"></textarea><br>
-            <input type="submit">
-        </form>
+    <div class="topnav">
+  <a class="active" href="index.html">Home</a>
+  <a href="skills.html">Skills</a>
+  <a href="contact.html">Contact</a>
+  <a href="about.html">About</a>
+</div>
+    <h4>Contact Me</h4>
+        <h3>If you ever want to get in touch, use the form below, or feel free to email me at ashvikdubey@gmail.com. I try my best to reply to things but there sadly aren't enough hours to respond to everyone. 😭</h3>
+    <div class="contact">
+  <form action="mailto:ashvikdubey@gmail.com" method="post" enctype="text/plain">
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="country">Country</label>
+    <input type="text" id="country" name="country" placeholder="Your Country">
+     <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+</div>
     </body>
 </html>
