@@ -42,5 +42,28 @@
           <div class="bottom-container">
   <p class="copyright">© 2023 Ashvik Dubey</p>
     </div>
-    </body>
+            <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDs6Yb00hLfYrayrw1RFTd4kEhgttxas98",
+    authDomain: "ashvik-dubey.firebaseapp.com",
+    projectId: "ashvik-dubey",
+    storageBucket: "ashvik-dubey.appspot.com",
+    messagingSenderId: "405515962993",
+    appId: "1:405515962993:web:67c7340200c3f51833a9d0",
+    measurementId: "G-GNW6QQ9XWE"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
 </html>
