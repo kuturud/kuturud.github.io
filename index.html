@@ -1,69 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Ashvik Dubey</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="favicon.ico">
-        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Inter&family=Sacramento&display=swap" rel="stylesheet">
-    </head>
-    <body>
-    <div class="topnav">
-  <a class="active" href="index.html">Home</a>
-  <a href="skills.html">Skills</a>
-  <a href="videos.html">Videos</a>
-  <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
-</div>
-    <div class="top-container">
-        <img class="top-cloud" src="https://i.ibb.co/w7r502F/cloud.png" alt="cloud">
-        <h1>I'm Ashvik</h1>
-        <h2>Technophile | Musician | Student | Photographer | YouTuber <h2/>
-        <img class="bottom-cloud" src="https://i.ibb.co/w7r502F/cloud.png" alt="cloud">
-        <img src="https://web.archive.org/web/20180819202235/http://seanhalpin.io/assets/img/content/home/masthead/land.svg" alt="mountain">
-    <div class="middle-container">
-        <div class="profile">
-    <img src="" alt="">
-    <h3>Hello, I'm Ashvik Dubey</h3>
-    <p><p>I'm a tech-savvy student in the UK. I am a fond musician who playes guitar, violin and sometimes, piano. I make videos on my<a href="https://www.youtube.com/channel/@ashmakes21">YouTube Channel</a>about technology, music and a spot of gaming and plane-spotting.</p>
-  </div>
-     <div class="things-to-do">
-      <h3>Here you can:</h3>
-        <ol>
-            <li><a href="contact.html">Contact Me</a></li>
-            <li><a href="skills.html">See My Skills</a></li>
-            <li><a href="articles.html">Read my Articles</a></li>
-            <li><a href="about.html">Find out more About Me</a></li>
-            <li><a href="videos.html">Watch all my YouTube Videos</a></li>
-            <li>See the production guides of my YouTube Videos</li>
-        </ol>
-    </div>
-  </div>
-          <div class="bottom-container">
-  <p class="copyright">© 2023 Ashvik Dubey</p>
-    </div>
-            <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Animated Homepage</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDs6Yb00hLfYrayrw1RFTd4kEhgttxas98",
-    authDomain: "ashvik-dubey.firebaseapp.com",
-    projectId: "ashvik-dubey",
-    storageBucket: "ashvik-dubey.appspot.com",
-    messagingSenderId: "405515962993",
-    appId: "1:405515962993:web:67c7340200c3f51833a9d0",
-    measurementId: "G-GNW6QQ9XWE"
-  };
+    <section id="home" class="hero">
+        <h1 class="hero-title">Welcome to Our Stunning Animated Website</h1>
+    </section>
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <div class="timeline">
+                <!-- Timeline items go here -->
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-cards">
+            <!-- Services cards go here -->
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-gallery">
+            <!-- Portfolio items go here -->
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <!-- Contact form goes here -->
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Company</p>
+        <a href="/bhajan-slide-generator">Bhajan Slide Generator</a>
+    </footer>
 </body>
 </html>
