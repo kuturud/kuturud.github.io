@@ -3,58 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-    <title>Animated Homepage</title>
+    <title>Ashvik Dubey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Merriweather:wght@400;700&family=Inter:wght@400;600;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <h1 class="hero-title">Welcome to Our Stunning Animated Website</h1>
-    </section>
-
-    <section id="about">
-        <h2>About Us</h2>
-        <div class="about-content">
-            <div class="timeline">
-                <!-- Timeline items go here -->
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="logo">AD</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="videos.html" class="nav-link">Videos</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="about.html" class="nav-link">About</a>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="services-cards">
-            <!-- Services cards go here -->
+    <div class="top-container">
+        <img class="top-cloud animate-float" src="https://i.ibb.co/r6J9vHX/cloud.png" alt="cloud">
+        <h1 class="animate-fade-in">I'm Ashvik.</h1>
+        <h2 class="animate-fade-in-delay">a <span class="typing-text">programmer</span>.</h2>
+        <img class="bottom-cloud animate-float-reverse" src="https://i.ibb.co/r6J9vHX/cloud.png" alt="cloud">
+        <img class="mountain" src="https://i.ibb.co/T8LrWsh/mountain.png" alt="mountain-img">
+    </div>
+
+    <div class="middle-container">
+        <div class="profile animate-on-scroll">
+            <img class="profile-img pulse" src="https://i.ibb.co/h1nWqfY/ashvik.png" alt="ashvik-profile-pic">
+            <h2>Hello.</h2>
+            <p class="intro-text">I'm a tech-savvy student and passionate musician. I create content, code, and make music.</p>
         </div>
-    </section>
-
-    <section id="portfolio">
-        <h2>Our Portfolio</h2>
-        <div class="portfolio-gallery">
-            <!-- Portfolio items go here -->
+        <hr class="divider">
+        
+        <div class="skills-preview animate-on-scroll">
+            <h2>What I Do</h2>
+            <div class="skill-cards">
+                <div class="skill-card card-hover">
+                    <img src="https://i.ibb.co/gjs9Gwz/music.png" alt="Music">
+                    <h3>Music</h3>
+                    <p>Guitar, violin, and piano player with a passion for creating melodies</p>
+                </div>
+                <div class="skill-card card-hover">
+                    <img src="https://i.ibb.co/mb0ndPb/editing.png" alt="Video Editing">
+                    <h3>Video Editing</h3>
+                    <p>Creating engaging content for YouTube and beyond</p>
+                </div>
+                <div class="skill-card card-hover">
+                    <img src="https://i.ibb.co/Bq2PQnf/web-design.png" alt="Web Design">
+                    <h3>Web Design</h3>
+                    <p>Building beautiful and functional websites</p>
+                </div>
+            </div>
         </div>
-    </section>
+        <hr class="divider">
+        
+        <div class="get-in-touch animate-on-scroll">
+            <h2>Get In Touch</h2>
+            <h3>If you love music and tech as much as I do.</h3>
+            <p class="contact-message">Want to collaborate or just say hi? I'd love to hear from you!</p>
+            <a class="btn" href="contact.html">CONTACT ME</a>
+        </div>
+    </div>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form>
-            <!-- Contact form goes here -->
-        </form>
-    </section>
+    <div class="bottom-container">
+        <a class="footer-link" href="https://youtube.com/@ashmakes21" target="_blank">YouTube</a>
+        <a class="footer-link" href="https://github.com/kuturud" target="_blank">GitHub</a>
+        <a class="footer-link" href="/bhajan-slide-generator">Bhajan Slide Generator</a>
+        <p class="copyright">© 2025 Ashvik Dubey</p>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Your Company</p>
-        <a href="/bhajan-slide-generator">Bhajan Slide Generator</a>
-    </footer>
+    <script src="animations.js"></script>
 </body>
 </html>
