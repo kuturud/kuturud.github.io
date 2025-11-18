@@ -9,10 +9,24 @@ html {
     scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 body {
     background-color: #E4F9F5;
     text-align: center;
-    font-family: 'Merriweather', serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -23,6 +37,55 @@ body {
 
 body.loaded {
     opacity: 1;
+}
+
+/* ===== FLOATING EMOJI BACKGROUND ===== */
+.emoji-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeInBackground 2s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .emoji-background {
+        display: none;
+    }
+}
+
+.floating-emoji {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.15;
+    user-select: none;
+    animation: floatEmoji 20s ease-in-out infinite;
+}
+
+.floating-emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; animation-duration: 18s; }
+.floating-emoji:nth-child(2) { top: 20%; left: 80%; animation-delay: 2s; animation-duration: 22s; }
+.floating-emoji:nth-child(3) { top: 60%; left: 15%; animation-delay: 4s; animation-duration: 20s; }
+.floating-emoji:nth-child(4) { top: 80%; left: 70%; animation-delay: 6s; animation-duration: 24s; }
+.floating-emoji:nth-child(5) { top: 40%; left: 85%; animation-delay: 8s; animation-duration: 19s; }
+.floating-emoji:nth-child(6) { top: 70%; left: 40%; animation-delay: 10s; animation-duration: 21s; }
+
+@keyframes floatEmoji {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(20px, -30px) rotate(10deg);
+    }
+    50% {
+        transform: translate(-15px, -60px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(10px, -30px) rotate(5deg);
+    }
 }
 
 /* ===== LIQUID GOOEY BACKGROUND ===== */
@@ -38,6 +101,12 @@ body.loaded {
     animation: fadeInBackground 2s ease-out forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .liquid-background {
+        display: none;
+    }
+}
+
 @keyframes fadeInBackground {
     to {
         opacity: 1;
@@ -48,30 +117,33 @@ body.loaded {
 h1 {
     font-size: clamp(3rem, 8vw, 5.625rem);
     margin: 0 auto;
-    font-family: 'Sacramento', cursive;
+    font-family: 'Space Grotesk', sans-serif;
     color: #2ecc71;
     animation: fadeInDown 1s ease-out;
+    font-weight: 700;
 }
 
 h2 {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(1.25rem, 3vw, 2rem);
     padding: 0 20px;
-    font-weight: bold;
+    font-weight: 700;
     color: #333;
 }
 
 h3 {
-    font-family: 'Gloria Hallelujah', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     color: #3498db;
     font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 600;
 }
 
 h4 {
     font-size: clamp(2rem, 5vw, 3rem);
     margin: 20px auto;
-    font-family: 'Merriweather', serif;
+    font-family: 'Space Grotesk', sans-serif;
     color: #2ecc71;
+    font-weight: 700;
 }
 
 p {
@@ -82,7 +154,7 @@ p {
 
 a {
     color: #11999E;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     text-decoration: none;
     transition: all 0.3s ease;
 }
@@ -115,10 +187,10 @@ a:hover {
 }
 
 .logo {
-    font-family: 'Sacramento', cursive;
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2rem;
     color: #2ecc71;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .nav-links {
@@ -194,6 +266,44 @@ a:hover {
     overflow: hidden;
 }
 
+/* ===== EMOJI DECORATIONS ===== */
+.emoji-cloud {
+    position: absolute;
+    font-size: 4rem;
+    animation: float 4s ease-in-out infinite;
+    will-change: transform;
+    user-select: none;
+}
+
+.emoji-cloud.top-cloud {
+    right: 15%;
+    top: 80px;
+}
+
+.emoji-cloud.bottom-cloud {
+    left: 10%;
+    bottom: 400px;
+    animation: floatReverse 5s ease-in-out infinite;
+}
+
+.emoji-mountain {
+    font-size: 15rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    user-select: none;
+    line-height: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .emoji-cloud,
+    .emoji-mountain {
+        animation: none;
+    }
+}
+
 .top-cloud,
 .cloud-svg.top-cloud {
     position: absolute;
@@ -254,6 +364,27 @@ a:hover {
     transform: translateY(0);
 }
 
+.emoji-avatar {
+    font-size: 8rem;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    border: 5px solid #2ecc71;
+    animation: pulse 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(102, 191, 191, 0.1));
+    user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .emoji-avatar {
+        animation: none;
+    }
+}
+
 .profile-img {
     width: 150px;
     height: 150px;
@@ -311,6 +442,14 @@ a:hover {
     cursor: pointer;
 }
 
+.skill-emoji {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    user-select: none;
+    display: inline-block;
+}
+
 .skill-card img,
 .skill-card svg {
     width: 80px;
@@ -334,9 +473,22 @@ a:hover {
     box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
 }
 
+.card-hover:hover .skill-emoji,
 .card-hover:hover img,
 .card-hover:hover svg {
     transform: scale(1.1) rotate(-5deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-hover:hover {
+        transform: translateY(-10px);
+    }
+    
+    .card-hover:hover .skill-emoji,
+    .card-hover:hover img,
+    .card-hover:hover svg {
+        transform: scale(1.1);
+    }
 }
 
 /* ===== SKILL LIST (for skills.html) ===== */
@@ -473,7 +625,7 @@ textarea {
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 20px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
     transition: all 0.3s ease;
     resize: vertical;
@@ -707,6 +859,28 @@ input[type=submit]:hover {
         font-size: 1.5rem;
     }
     
+    .emoji-cloud.top-cloud {
+        right: 5%;
+        font-size: 2.5rem;
+        top: 100px;
+    }
+    
+    .emoji-cloud.bottom-cloud {
+        left: 5%;
+        font-size: 2.5rem;
+        bottom: 300px;
+    }
+    
+    .emoji-mountain {
+        font-size: 10rem;
+    }
+    
+    .emoji-avatar {
+        font-size: 6rem;
+        width: 120px;
+        height: 120px;
+    }
+    
     .top-cloud,
     .cloud-svg.top-cloud {
         right: 5%;
@@ -760,5 +934,15 @@ input[type=submit]:hover {
     
     .top-container {
         padding: 120px 10px 80px;
+    }
+    
+    .emoji-mountain {
+        font-size: 8rem;
+    }
+    
+    .emoji-avatar {
+        font-size: 5rem;
+        width: 100px;
+        height: 100px;
     }
 }
