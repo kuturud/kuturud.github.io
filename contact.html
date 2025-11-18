@@ -1,35 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Ashvik Dubey</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-    <div class="topnav">
-  <a class="active" href="index.html">Home</a>
-  <a href="skills.html">Skills</a>
-  <a href="videos.html">Videos</a>
-  <a href="contact.html">Contact</a>
-  <a href="about.html">About</a>
-</div>
-    <h4>Contact Me</h4>
-        <h3>If you ever want to get in touch, use the form below, or feel free to email me at ashvikdubey@gmail.com. I try my best to reply to things but there sadly aren't enough hours to respond to everyone. 😭</h3>
-    <div class="contact">
-  <form action="mailto:ashvikdubey@gmail.com" method="post" enctype="text/plain">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Ashvik Dubey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Merriweather:wght@400;700&family=Inter:wght@400;600;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="modern-nav">
+        <div class="nav-container">
+            <div class="logo">AD</div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="skills.html" class="nav-link">Skills</a>
+                <a href="videos.html" class="nav-link">Videos</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
 
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <div class="top-container">
+        <img class="top-cloud animate-float" src="https://i.ibb.co/r6J9vHX/cloud.png" alt="cloud">
+        <h1 class="animate-fade-in">Contact Me</h1>
+        <img class="bottom-cloud animate-float-reverse" src="https://i.ibb.co/r6J9vHX/cloud.png" alt="cloud">
+        <img class="mountain" src="https://i.ibb.co/T8LrWsh/mountain.png" alt="mountain-img">
+    </div>
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <div class="middle-container">
+        <div class="profile animate-on-scroll">
+            <h2>Get In Touch</h2>
+            <h3>If you ever want to get in touch, use the form below, or feel free to email me at ashvikdubey@gmail.com. I try my best to reply to things but there sadly aren't enough hours to respond to everyone. 😭</h3>
+        </div>
+        
+        <div class="contact animate-on-scroll">
+            <form action="mailto:ashvikdubey@gmail.com" method="post" enctype="text/plain">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
 
-    <label for="country">Country</label>
-    <input type="text" id="country" name="country" placeholder="Your Country">
-     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-    <input type="submit" value="Submit">
-  </form>
-</div>
-    </body>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+
+                <label for="country">Country</label>
+                <input type="text" id="country" name="country" placeholder="Your Country">
+                
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
+                
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+        
+        <hr class="divider">
+        
+        <div class="get-in-touch animate-on-scroll">
+            <h2>Connect With Me</h2>
+            <p class="contact-message">You can also find me on social media and check out my projects!</p>
+            <div style="margin: 30px 0;">
+                <a class="btn" href="https://youtube.com/@ashmakes21" target="_blank">YOUTUBE</a>
+                <a class="btn" href="https://github.com/kuturud" target="_blank">GITHUB</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-container">
+        <a class="footer-link" href="https://youtube.com/@ashmakes21" target="_blank">YouTube</a>
+        <a class="footer-link" href="https://github.com/kuturud" target="_blank">GitHub</a>
+        <a class="footer-link" href="/bhajan-slide-generator">Bhajan Slide Generator</a>
+        <p class="copyright">© 2025 Ashvik Dubey</p>
+    </div>
+
+    <script src="animations.js"></script>
+</body>
 </html>
