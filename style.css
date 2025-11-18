@@ -18,10 +18,30 @@ body {
     overflow-x: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
+    position: relative;
 }
 
 body.loaded {
     opacity: 1;
+}
+
+/* ===== LIQUID GOOEY BACKGROUND ===== */
+.liquid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeInBackground 2s ease-out forwards;
+}
+
+@keyframes fadeInBackground {
+    to {
+        opacity: 1;
+    }
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -174,7 +194,8 @@ a:hover {
     overflow: hidden;
 }
 
-.top-cloud {
+.top-cloud,
+.cloud-svg.top-cloud {
     position: absolute;
     right: 15%;
     top: 80px;
@@ -183,7 +204,8 @@ a:hover {
     will-change: transform;
 }
 
-.bottom-cloud {
+.bottom-cloud,
+.cloud-svg.bottom-cloud {
     position: absolute;
     left: 10%;
     bottom: 400px;
@@ -192,7 +214,8 @@ a:hover {
     will-change: transform;
 }
 
-.mountain {
+.mountain,
+.mountain-svg {
     width: 100%;
     max-width: 600px;
     position: absolute;
@@ -288,7 +311,8 @@ a:hover {
     cursor: pointer;
 }
 
-.skill-card img {
+.skill-card img,
+.skill-card svg {
     width: 80px;
     height: 80px;
     margin-bottom: 20px;
@@ -310,7 +334,8 @@ a:hover {
     box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
 }
 
-.card-hover:hover img {
+.card-hover:hover img,
+.card-hover:hover svg {
     transform: scale(1.1) rotate(-5deg);
 }
 
@@ -338,7 +363,8 @@ a:hover {
     box-shadow: 0 5px 20px rgba(46, 204, 113, 0.2);
 }
 
-.skill-item img {
+.skill-item img,
+.skill-item svg {
     width: 50px;
     height: 50px;
 }
@@ -681,13 +707,15 @@ input[type=submit]:hover {
         font-size: 1.5rem;
     }
     
-    .top-cloud {
+    .top-cloud,
+    .cloud-svg.top-cloud {
         right: 5%;
         width: 60px;
         top: 100px;
     }
     
-    .bottom-cloud {
+    .bottom-cloud,
+    .cloud-svg.bottom-cloud {
         left: 5%;
         width: 60px;
         bottom: 300px;
