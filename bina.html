@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary & Hex Quest</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c18;
+  --surface: #0f1626;
+  --surface2: #161f35;
+  --surface3: #1d2844;
+  --accent: #00e8b8;
+  --accent2: #6d28d9;
+  --accent3: #f59e0b;
+  --danger: #f43f5e;
+  --text: #e2e8f0;
+  --muted: #4a5568;
+  --border: rgba(0,232,184,0.12);
+  --starter: #10b981;
+  --developing: #f59e0b;
+  --extended: #f43f5e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* animated grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,232,184,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,232,184,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  top: -30%;
+  left: -20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(109,40,217,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container { max-width: 860px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+
+/* ── HEADER ── */
+header { text-align: center; padding: 36px 0 24px; }
+.logo {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.6rem, 4.5vw, 2.8rem);
+  font-weight: 700;
+  background: linear-gradient(120deg, var(--accent) 0%, #a78bfa 60%, var(--accent) 100%);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+  letter-spacing: -1px;
+}
+@keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+.tagline { color: var(--muted); font-size: 0.88rem; margin-top: 5px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 16px 0;
+}
+.stat-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 5px 16px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.stat-chip .label { color: var(--muted); font-size: 0.72rem; }
+#timerChip { animation: pulse-border 2s ease-in-out infinite; }
+@keyframes pulse-border { 0%,100%{border-color:rgba(0,232,184,0.12)} 50%{border-color:rgba(0,232,184,0.35)} }
+
+/* ── PROGRESS ── */
+.progress-wrap { margin: 10px 0 20px; }
+.progress-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-bottom: 5px; font-family: 'Space Mono', monospace; }
+.progress-track { background: var(--surface); border: 1px solid var(--border); border-radius: 50px; height: 7px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 50px; transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+
+/* ── TOPIC NAV ── */
+.topic-nav { display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; margin-bottom: 26px; }
+.topic-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  padding: 7px 13px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+  position: relative;
+}
+.topic-btn:hover { border-color: var(--accent); color: var(--accent); }
+.topic-btn.active { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.topic-btn.completed { border-color: var(--accent); color: var(--accent); }
+.topic-btn.completed::after { content: ' ✓'; }
+
+/* ── CARD ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 18px;
+  animation: fadeUp 0.3s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+.card h2 { font-size: 1.35rem; font-weight: 800; margin-bottom: 14px; color: var(--accent); }
+.card h3 { font-size: 0.95rem; font-weight: 700; margin: 14px 0 7px; color: var(--accent3); text-transform: uppercase; letter-spacing: 0.05em; }
+.card p { line-height: 1.75; color: #94a3b8; margin-bottom: 9px; font-size: 0.92rem; }
+
+/* ── DIFFICULTY BADGE ── */
+.diff-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 50px;
+  padding: 3px 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.diff-badge.starter { background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.4); color: #34d399; }
+.diff-badge.developing { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: #fbbf24; }
+.diff-badge.extended { background: rgba(244,63,94,0.15); border: 1px solid rgba(244,63,94,0.4); color: #fb7185; }
+
+/* ── DIFFICULTY PROGRESS ── */
+.diff-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+}
+.diff-seg {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--surface3);
+  position: relative;
+  overflow: hidden;
+}
+.diff-seg-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+.diff-seg.s .diff-seg-fill { background: var(--starter); }
+.diff-seg.d .diff-seg-fill { background: var(--developing); }
+.diff-seg.e .diff-seg-fill { background: var(--extended); }
+
+/* ── QUESTION BOX ── */
+.question-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin: 16px 0;
+  text-align: center;
+}
+.q-meta { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-bottom: 10px; }
+.question-text { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; line-height: 1.5; }
+.mono-label { font-family: 'Space Mono', monospace; color: var(--accent); font-size: 1.5rem; font-weight: 700; }
+
+/* Multi-part question */
+.multipart { text-align: left; }
+.multipart-item { margin-bottom: 12px; }
+.multipart-item label { display: block; font-size: 0.88rem; color: #94a3b8; margin-bottom: 5px; }
+
+input[type="text"] {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  padding: 9px 14px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus { border-color: var(--accent); }
+input.wide { max-width: 480px; }
+
+/* ── BUTTONS ── */
+.btn { border: none; border-radius: 10px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 700; padding: 10px 22px; transition: all 0.18s; display: inline-block; }
+.btn-primary { background: var(--accent); color: #080c18; }
+.btn-primary:hover { background: #00d4a8; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,232,184,0.3); }
+.btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-hint { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.35); color: #fbbf24; }
+.btn-hint:hover { background: rgba(245,158,11,0.22); }
+.btn-row { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+
+/* ── FEEDBACK ── */
+.feedback { border-radius: 10px; padding: 12px 16px; margin-top: 12px; font-weight: 600; display: none; animation: fadeUp 0.2s ease; font-size: 0.92rem; line-height: 1.5; }
+.feedback.correct { background: rgba(0,232,184,0.1); border: 1px solid rgba(0,232,184,0.35); color: var(--accent); }
+.feedback.wrong { background: rgba(244,63,94,0.1); border: 1px solid rgba(244,63,94,0.35); color: #fb7185; }
+.feedback.info { background: rgba(109,40,217,0.1); border: 1px solid rgba(109,40,217,0.35); color: #a78bfa; }
+
+/* ── HINT BOX ── */
+.hint-box {
+  background: rgba(245,158,11,0.07);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #fcd34d;
+  display: none;
+  text-align: left;
+  line-height: 1.65;
+}
+.hint-box code { font-family: 'Space Mono', monospace; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 4px; font-size: 0.8rem; }
+
+/* ── TABLES ── */
+table { width: 100%; border-collapse: collapse; font-family: 'Space Mono', monospace; font-size: 0.82rem; margin: 12px 0; }
+th { background: var(--surface2); color: var(--accent); padding: 9px 13px; text-align: left; border-bottom: 2px solid var(--border); }
+td { padding: 8px 13px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+tr:hover td { background: rgba(255,255,255,0.015); }
+
+/* ── BIT DEMO ── */
+.bit-row { display: flex; gap: 5px; justify-content: center; margin: 14px 0; flex-wrap: wrap; }
+.bit-box {
+  width: 50px; height: 50px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace;
+  transition: all 0.18s;
+  cursor: pointer;
+  background: var(--surface2);
+  position: relative;
+  user-select: none;
+}
+.bit-box .bv { font-size: 1.25rem; font-weight: 700; }
+.bit-box .bw { font-size: 0.58rem; color: var(--muted); position: absolute; top: 3px; right: 4px; }
+.bit-box.on { background: rgba(0,232,184,0.14); border-color: var(--accent); }
+.bit-box.on .bv { color: var(--accent); }
+.bit-box:hover { border-color: var(--accent); transform: scale(1.06); }
+
+/* ── ADDITION GRID ── */
+.add-grid { font-family: 'Space Mono', monospace; font-size: 1rem; text-align: right; margin: 14px auto; max-width: 300px; line-height: 2.1; }
+.add-grid .row { display: flex; justify-content: flex-end; gap: 3px; }
+.add-grid .bit { width: 22px; text-align: center; }
+.add-grid .divider { border-top: 2px solid var(--muted); margin: 3px 0; }
+
+/* ── HEX GRID ── */
+.hex-ref { display: grid; grid-template-columns: repeat(8,1fr); gap: 3px; margin: 10px 0; }
+.hex-cell { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 4px; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text); }
+.hex-cell span { display: block; color: var(--accent); font-weight: 700; font-size: 0.82rem; }
+
+/* ── REF PANEL ── */
+.ref-panel { background: var(--surface2); border-left: 3px solid var(--accent2); border-radius: 0 10px 10px 0; padding: 12px 14px; margin: 12px 0; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: #a78bfa; line-height: 1.9; }
+
+/* ── STREAK ── */
+.streak-flash {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  color: white;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.95rem;
+  z-index: 999;
+  pointer-events: none;
+  animation: streakAnim 1.8s forwards;
+}
+@keyframes streakAnim {
+  0%{opacity:0;transform:translateY(-10px) scale(0.8)}
+  20%{opacity:1;transform:translateY(0) scale(1.05)}
+  70%{opacity:1;transform:translateY(0) scale(1)}
+  100%{opacity:0;transform:translateY(-6px)}
+}
+
+/* ── COMPLETION ── */
+.complete-card { text-align: center; padding: 32px 20px; }
+.big-score { font-family: 'Space Mono', monospace; font-size: 3.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.grade-badge { display: inline-block; background: var(--surface2); border: 2px solid var(--accent); border-radius: 50px; padding: 5px 22px; font-size: 1rem; font-weight: 800; color: var(--accent); margin: 10px 0; }
+.diff-summary { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 14px 0; }
+.diff-summary-chip { padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; font-family: 'Space Mono', monospace; }
+
+/* ── OVERFLOW HIGHLIGHT ── */
+.ov-bit { color: var(--danger); font-weight: 700; }
+
+/* ── OVERFLOW TOGGLE ── */
+.ov-toggle { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+.ov-btn { padding: 6px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted); transition: all 0.15s; font-family: 'Outfit', sans-serif; }
+.ov-btn.selected-yes { border-color: var(--danger); color: var(--danger); background: rgba(244,63,94,0.1); }
+.ov-btn.selected-no { border-color: var(--accent); color: var(--accent); background: rgba(0,232,184,0.1); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:580px){
+  .bit-box{width:38px;height:38px;}
+  .bit-box .bv{font-size:1rem;}
+  .mono-label{font-size:1.2rem;}
+  .card{padding:18px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="logo">Binary &amp; Hex Quest</div>
+  <div class="tagline">Year 11 Computer Science &nbsp;·&nbsp; Data Representation</div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat-chip" id="timerChip">⏱ <span id="timerDisp">00:00</span> <span class="label">elapsed</span></div>
+  <div class="stat-chip">⭐ <span id="scoreDisp">0</span> <span class="label">pts</span></div>
+  <div class="stat-chip">🔥 <span id="streakDisp">0</span> <span class="label">streak</span></div>
+  <div class="stat-chip">✅ <span id="correctDisp">0</span> &nbsp;❌ <span id="wrongDisp">0</span></div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-labels">
+    <span>Overall Progress</span>
+    <span id="progLabel">0 / 5 topics</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+</div>
+
+<div class="topic-nav" id="topicNav">
+  <button class="topic-btn active" onclick="showTopic(0)" id="tab0">📦 Data Units</button>
+  <button class="topic-btn" onclick="showTopic(1)" id="tab1">🔢 Denary ↔ Binary</button>
+  <button class="topic-btn" onclick="showTopic(2)" id="tab2">➕ Binary Addition</button>
+  <button class="topic-btn" onclick="showTopic(3)" id="tab3">🔡 Denary ↔ Hex</button>
+  <button class="topic-btn" onclick="showTopic(4)" id="tab4">🔄 Binary ↔ Hex</button>
+</div>
+
+<!-- TOPICS -->
+<div id="topic0">
+  <div class="card">
+    <h2>📦 Data Units</h2>
+    <p>All data in a computer is stored as <strong>binary (0s and 1s)</strong>. Electronic circuits have two states — off (0) and on (1) — making binary the natural language of computing.</p>
+    <h3>Storage Units</h3>
+    <table>
+      <tr><th>Unit</th><th>Abbreviation</th><th>Size</th><th>Real-world Example</th></tr>
+      <tr><td>Bit</td><td>b</td><td>Single 0 or 1</td><td>One switch on/off</td></tr>
+      <tr><td>Nibble</td><td>—</td><td>4 bits</td><td>One hex digit</td></tr>
+      <tr><td>Byte</td><td>B</td><td>8 bits</td><td>One character e.g. 'A'</td></tr>
+      <tr><td>Kilobyte</td><td>KB</td><td>1,024 B</td><td>Short text message</td></tr>
+      <tr><td>Megabyte</td><td>MB</td><td>1,024 KB</td><td>A digital photo</td></tr>
+      <tr><td>Gigabyte</td><td>GB</td><td>1,024 MB</td><td>An HD film</td></tr>
+      <tr><td>Terabyte</td><td>TB</td><td>1,024 GB</td><td>Laptop hard drive</td></tr>
+      <tr><td>Petabyte</td><td>PB</td><td>1,024 TB</td><td>Large data centre</td></tr>
+    </table>
+    <p>Each unit is <strong>1,024×</strong> larger than the previous because 2¹⁰ = 1,024.</p>
+  </div>
+  <div id="quizArea0"></div>
+</div>
+
+<div id="topic1" style="display:none">
+  <div class="card">
+    <h2>🔢 Denary ↔ 8-bit Binary</h2>
+    <p>Denary (base 10) is our everyday number system. Binary (base 2) uses only 0 and 1. Conversion uses column weights that are powers of 2.</p>
+    <h3>Interactive Bit Demo — click bits to toggle!</h3>
+    <div class="bit-row" id="demoBits">
+      <div class="bit-box" data-w="128"><span class="bv">0</span><span class="bw">128</span></div>
+      <div class="bit-box" data-w="64"><span class="bv">0</span><span class="bw">64</span></div>
+      <div class="bit-box" data-w="32"><span class="bv">0</span><span class="bw">32</span></div>
+      <div class="bit-box" data-w="16"><span class="bv">0</span><span class="bw">16</span></div>
+      <div class="bit-box" data-w="8"><span class="bv">0</span><span class="bw">8</span></div>
+      <div class="bit-box" data-w="4"><span class="bv">0</span><span class="bw">4</span></div>
+      <div class="bit-box" data-w="2"><span class="bv">0</span><span class="bw">2</span></div>
+      <div class="bit-box" data-w="1"><span class="bv">0</span><span class="bw">1</span></div>
+    </div>
+    <div style="text-align:center;font-family:'Space Mono',monospace;color:var(--accent);font-size:1.1rem;margin-bottom:6px">
+      Total = <span id="demoTotal">0</span>
+    </div>
+    <h3>Example: 157 → Binary</h3>
+    <div class="ref-panel">
+      157 ≥ 128? Yes → bit=1, remainder 29<br>
+      29 ≥ 64? No → bit=0<br>
+      29 ≥ 32? No → bit=0<br>
+      29 ≥ 16? Yes → bit=1, remainder 13<br>
+      13 ≥ 8? Yes → bit=1, remainder 5<br>
+      5 ≥ 4? Yes → bit=1, remainder 1<br>
+      1 ≥ 2? No → bit=0<br>
+      1 ≥ 1? Yes → bit=1<br>
+      ∴ 157 = <strong>10011101</strong>
+    </div>
+  </div>
+  <div id="quizArea1"></div>
+</div>
+
+<div id="topic2" style="display:none">
+  <div class="card">
+    <h2>➕ Binary Addition &amp; Overflow</h2>
+    <h3>The 4 rules</h3>
+    <div class="ref-panel">0+0=0 &nbsp;|&nbsp; 0+1=1 &nbsp;|&nbsp; 1+0=1<br>1+1=10 (write 0, carry 1)<br>1+1+carry=11 (write 1, carry 1)</div>
+    <h3>⚠️ Overflow Error</h3>
+    <p>Max 8-bit value = 255 (11111111). If the result exceeds 255, a 9th bit is needed but lost — this is an <strong>overflow error</strong>. The stored result will be incorrect.</p>
+    <div class="ref-panel">
+      11111111 (255) + 00000001 (1)<br>
+      = <span style="color:var(--danger)">1</span>00000000 → 9th bit lost!<br>
+      Stored result = 00000000 (0) ← <span style="color:var(--danger)">OVERFLOW</span>
+    </div>
+  </div>
+  <div id="quizArea2"></div>
+</div>
+
+<div id="topic3" style="display:none">
+  <div class="card">
+    <h2>🔡 Denary ↔ Hexadecimal</h2>
+    <p>Hex (base 16) uses 16 symbols: 0–9 and A–F. It compactly represents binary because each hex digit = exactly 4 bits (a nibble).</p>
+    <h3>Hex Reference</h3>
+    <div class="hex-ref">
+      <div class="hex-cell"><span>0</span>0</div><div class="hex-cell"><span>1</span>1</div>
+      <div class="hex-cell"><span>2</span>2</div><div class="hex-cell"><span>3</span>3</div>
+      <div class="hex-cell"><span>4</span>4</div><div class="hex-cell"><span>5</span>5</div>
+      <div class="hex-cell"><span>6</span>6</div><div class="hex-cell"><span>7</span>7</div>
+      <div class="hex-cell"><span>8</span>8</div><div class="hex-cell"><span>9</span>9</div>
+      <div class="hex-cell"><span>A</span>10</div><div class="hex-cell"><span>B</span>11</div>
+      <div class="hex-cell"><span>C</span>12</div><div class="hex-cell"><span>D</span>13</div>
+      <div class="hex-cell"><span>E</span>14</div><div class="hex-cell"><span>F</span>15</div>
+    </div>
+    <h3>Example: 200 → Hex</h3>
+    <div class="ref-panel">200 ÷ 16 = 12 rem 8 → C8<br>∴ 200 = <strong>C8</strong></div>
+    <h3>Example: A3 → Denary</h3>
+    <div class="ref-panel">A=10 → 10×16=160 &nbsp;|&nbsp; 3×1=3<br>160+3 = <strong>163</strong></div>
+  </div>
+  <div id="quizArea3"></div>
+</div>
+
+<div id="topic4" style="display:none">
+  <div class="card">
+    <h2>🔄 Binary ↔ Hexadecimal</h2>
+    <p>Split 8-bit binary into two nibbles of 4 bits. Convert each nibble separately — this is why hex is so useful in computing!</p>
+    <h3>Binary → Hex: 10110101</h3>
+    <div class="ref-panel">Split: <strong>1011</strong> | <strong>0101</strong><br>1011 = 8+2+1=11 = B<br>0101 = 4+1=5 = 5<br>∴ <strong>B5</strong></div>
+    <h3>Hex → Binary: 3F</h3>
+    <div class="ref-panel">3=<strong>0011</strong> &nbsp;|&nbsp; F=15=<strong>1111</strong><br>∴ <strong>00111111</strong></div>
+    <p>💡 Always use all 4 bits per nibble — pad with leading zeros. E.g. 3 = 0011, not 11.</p>
+  </div>
+  <div id="quizArea4"></div>
+</div>
+
+<!-- FINAL SCREEN -->
+<div id="finalScreen" style="display:none">
+  <div class="card complete-card">
+    <div style="font-size:2.8rem;margin-bottom:8px">🎓</div>
+    <h2 style="text-align:center;font-size:1.8rem">All Done!</h2>
+    <div class="big-score" id="finalScore"></div>
+    <div class="grade-badge" id="finalGrade"></div>
+    <p id="finalMsg" style="margin:12px 0;font-size:0.95rem;text-align:center;"></p>
+    <div class="diff-summary" id="diffSummary"></div>
+    <p style="font-size:0.82rem;color:var(--muted);text-align:center" id="finalTime"></p>
+    <div class="btn-row" style="margin-top:22px">
+      <button class="btn btn-primary" onclick="resetGame()">🔁 Play Again</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let score=0, correct=0, wrong=0, streak=0, maxStreak=0;
+let topicsCompleted=new Set();
+let currentTopic=0;
+let selectedOv=null;
+let diffCounts={starter:{c:0,w:0},developing:{c:0,w:0},extended:{c:0,w:0}};
+
+// Timer
+let timerSec=0, timerInterval=null;
+function startTimer(){
+  if(timerInterval) return;
+  timerInterval=setInterval(()=>{
+    timerSec++;
+    const m=String(Math.floor(timerSec/60)).padStart(2,'0');
+    const s=String(timerSec%60).padStart(2,'0');
+    document.getElementById('timerDisp').textContent=`${m}:${s}`;
+  },1000);
+}
+startTimer();
+
+// ═══════════════════════════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════════════════════════
+const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const toBin8=n=>n.toString(2).padStart(8,'0');
+const toHex2=n=>n.toString(16).toUpperCase().padStart(2,'0');
+const nibble=n=>n.toString(2).padStart(4,'0');
+
+function shuffle(arr){ let a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=ri(0,i);[a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function showStreak(n){
+  const el=document.createElement('div');
+  el.className='streak-flash';
+  el.textContent=n>=10?`🔥 ${n} streak! LEGENDARY!`:n>=5?`🔥 ${n} in a row!`:`🔥 ${n} streak!`;
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),1900);
+}
+
+function updateStats(){
+  document.getElementById('scoreDisp').textContent=score;
+  document.getElementById('streakDisp').textContent=streak;
+  document.getElementById('correctDisp').textContent=correct;
+  document.getElementById('wrongDisp').textContent=wrong;
+}
+
+function markAnswer(wasCorrect, diff){
+  if(wasCorrect){ score+=diff==='starter'?5:diff==='developing'?10:15; correct++; streak++; maxStreak=Math.max(maxStreak,streak); diffCounts[diff].c++; if(streak>1&&streak%3===0) showStreak(streak); }
+  else{ wrong++; streak=0; diffCounts[diff].w++; }
+  updateStats();
+}
+
+function diffBadge(diff){
+  const labels={starter:'⬤ Starter',developing:'⬤ Developing',extended:'⬤ Extended'};
+  return `<div class="diff-badge ${diff}">${labels[diff]}</div>`;
+}
+
+function diffBarHTML(doneS,totalS,doneD,totalD,doneE,totalE){
+  const pct=(d,t)=>t?Math.round(d/t*100):0;
+  return `<div class="diff-progress">
+    <span style="color:var(--starter)">S</span>
+    <div class="diff-seg s"><div class="diff-seg-fill" style="width:${pct(doneS,totalS)}%"></div></div>
+    <span style="color:var(--developing)">D</span>
+    <div class="diff-seg d"><div class="diff-seg-fill" style="width:${pct(doneD,totalD)}%"></div></div>
+    <span style="color:var(--extended)">E</span>
+    <div class="diff-seg e"><div class="diff-seg-fill" style="width:${pct(doneE,totalE)}%"></div></div>
+    <span style="font-size:0.7rem">${doneS+doneD+doneE}/${totalS+totalD+totalE}</span>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TOPIC 0 — DATA UNITS (15 questions, 3 tiers)
+// ═══════════════════════════════════════════════════════════════
+function makeUnitsQuestions(){
+  const starter=[
+    {q:"How many bits are in a nibble?",a:"4",hint:"Half a byte."},
+    {q:"How many bits are in a byte?",a:"8",hint:"2 nibbles = 1 byte."},
+    {q:"How many bytes are in 1 Kilobyte?",a:"1024",hint:"2¹⁰ = 1,024."},
+    {q:"How many Kilobytes are in 1 Megabyte?",a:"1024",hint:"Each step up is ×1,024."},
+    {q:"A single 0 or 1 is called a...? (bit/nibble/byte)",a:"bit",hint:"Smallest unit of data."},
+  ];
+  const developing=[
+    {q:"How many bits are in 3 bytes?",a:"24",hint:"1 byte = 8 bits, so 3 × 8 = ?"},
+    {q:"How many bytes are in 2 Kilobytes?",a:"2048",hint:"1 KB = 1,024 bytes."},
+    {q:"How many nibbles are in 1 byte?",a:"2",hint:"nibble = 4 bits, byte = 8 bits."},
+    {q:"How many Megabytes in 2 Gigabytes?",a:"2048",hint:"1 GB = 1,024 MB."},
+    {q:"How many Gigabytes in 1 Terabyte?",a:"1024",hint:"Same pattern throughout."},
+  ];
+  const extended=[
+    {q:"A file is 4 KB. How many bytes is that?",a:"4096",hint:"4 × 1,024 = ?"},
+    {q:"How many bits are in 1 Kilobyte?",a:"8192",hint:"1 KB = 1,024 bytes; 1 byte = 8 bits."},
+    {q:"Order smallest to largest: Gigabyte, Bit, Megabyte, Terabyte, Byte\n(separate with commas)",a:"bit,byte,megabyte,gigabyte,terabyte",hint:"bit→nibble→byte→KB→MB→GB→TB→PB"},
+    {q:"A video is 2 GB. How many MB is that?",a:"2048",hint:"1 GB = 1,024 MB."},
+    {q:"How many Terabytes are in 1 Petabyte?",a:"1024",hint:"PB is the biggest listed unit; PB = 1,024 TB."},
+  ];
+  return {starter,developing,extended};
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TOPIC 1 — DENARY ↔ BINARY (15 questions, 3 tiers)
+// ═══════════════════════════════════════════════════════════════
+function makeBinaryQuestions(){
+  const starter=[], developing=[], extended=[];
+
+  // Starter: simple small numbers den→bin and bin→den
+  const starterNums=[5,10,15,25,50,100];
+  shuffle(starterNums).slice(0,3).forEach(n=>{
+    starter.push({
+      question:`Convert <span class="mono-label">${n}</span> (denary) to 8-bit binary`,
+      answer:toBin8(n),
+      hint:`Columns: 128|64|32|16|8|4|2|1<br>Is ${n} ≥ 128? ${n>=128?'Yes':'No'}. Work left to right.`,
+      placeholder:'e.g. 00001010'
+    });
+  });
+  const starterBins=[7,12,20,48,64,128];
+  shuffle(starterBins).slice(0,2).forEach(n=>{
+    starter.push({
+      question:`Convert <span class="mono-label">${toBin8(n)}</span> (binary) to denary`,
+      answer:String(n),
+      hint:`Add up columns where bit=1:<br>128·${+toBin8(n)[0]}+64·${+toBin8(n)[1]}+32·${+toBin8(n)[2]}+16·${+toBin8(n)[3]}+8·${+toBin8(n)[4]}+4·${+toBin8(n)[5]}+2·${+toBin8(n)[6]}+1·${+toBin8(n)[7]}`,
+      placeholder:'e.g. 12'
+    });
+  });
+
+  // Developing: mid-range numbers
+  const devNums=[67,89,134,178,200,213,245];
+  shuffle(devNums).slice(0,3).forEach(n=>{
+    developing.push({
+      question:`Convert <span class="mono-label">${n}</span> (denary) to 8-bit binary`,
+      answer:toBin8(n),
+      hint:`Start: ${n} ≥ 128? ${n>=128?'Yes, bit=1 remainder '+(n-128):'No, bit=0'}. Continue with remaining value.`,
+      placeholder:'e.g. 01000011'
+    });
+  });
+  const devBins=[83,119,163,207,241];
+  shuffle(devBins).slice(0,2).forEach(n=>{
+    developing.push({
+      question:`Convert <span class="mono-label">${toBin8(n)}</span> (binary) to denary`,
+      answer:String(n),
+      hint:`Add the column weights for each 1-bit: ${toBin8(n).split('').map((b,i)=>b==='1'?[128,64,32,16,8,4,2,1][i]:null).filter(Boolean).join('+')}`,
+      placeholder:'e.g. 200'
+    });
+  });
+
+  // Extended: edge cases + multi-step
+  extended.push({
+    question:`What is the largest value that can be stored in 8 bits?`,
+    answer:'255',
+    hint:`All 8 bits = 1: 128+64+32+16+8+4+2+1 = ?`,
+    placeholder:'e.g. 255'
+  });
+  extended.push({
+    question:`Convert <span class="mono-label">255</span> to 8-bit binary`,
+    answer:'11111111',
+    hint:`All bits are 1 when the number equals 128+64+32+16+8+4+2+1`,
+    placeholder:'e.g. 11111111'
+  });
+  const extNums=[173,199,227,248];
+  shuffle(extNums).slice(0,2).forEach(n=>{
+    extended.push({
+      question:`Convert <span class="mono-label">${n}</span> (denary) to 8-bit binary`,
+      answer:toBin8(n),
+      hint:`${n} ≥ 128? Yes (${n}−128=${n-128}). Continue down columns.`,
+      placeholder:'e.g. 10101101'
+    });
+  });
+  extended.push({
+    question:`A byte stores the value 11000101. What is its denary value?`,
+    answer:'197',
+    hint:`128+64+0+0+0+4+0+1 = ?`,
+    placeholder:'e.g. 197'
+  });
+
+  return {starter,developing,extended};
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TOPIC 2 — BINARY ADDITION (15 questions, 3 tiers)
+// ═══════════════════════════════════════════════════════════════
+function makeAddQuestions(){
+  const make=(a,b)=>{
+    const sum=a+b, ov=sum>255, res=sum&0xFF;
+    return {a,b,sum,ov,res,binA:toBin8(a),binB:toBin8(b),binRes:toBin8(res)};
+  };
+
+  const starter=[
+    make(5,3),make(12,7),make(25,10),make(15,20),make(30,14)
+  ];
+  const developing=[
+    make(65,70),make(100,50),make(80,90),make(110,44),make(127,64)
+  ];
+  const extended=[
+    make(200,80),make(150,130),make(255,1),make(200,200),make(128,200)
+  ];
+
+  return {starter,developing,extended};
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TOPIC 3 — DENARY ↔ HEX (15 questions, 3 tiers)
+// ═══════════════════════════════════════════════════════════════
+function makeHexQuestions(){
+  const starter=[], developing=[], extended=[];
+
+  // Starter: simple values / known digits
+  const sNums=[10,15,16,32,48];
+  sNums.forEach(n=>{
+    if(Math.random()<0.5){
+      starter.push({question:`Convert <span class="mono-label">${n}</span> (denary) to hex`,answer:toHex2(n),hint:`${n}÷16=${Math.floor(n/16)} rem ${n%16}. ${Math.floor(n/16).toString(16).toUpperCase()} | ${(n%16).toString(16).toUpperCase()}`,placeholder:'e.g. 1F'});
+    } else {
+      const h=toHex2(n);
+      starter.push({question:`Convert <span class="mono-label">${h}</span> (hex) to denary`,answer:String(n),hint:`${parseInt(h[0],16)}×16 + ${parseInt(h[1],16)} = ?`,placeholder:'e.g. 30'});
+    }
+  });
+
+  // Developing
+  const dNums=[100,127,160,200,210,230,250];
+  shuffle(dNums).slice(0,5).forEach(n=>{
+    if(Math.random()<0.5){
+      developing.push({question:`Convert <span class="mono-label">${n}</span> (denary) to hex`,answer:toHex2(n),hint:`${n}÷16=${Math.floor(n/16)} rem ${n%16}. Digits: ${Math.floor(n/16).toString(16).toUpperCase()} and ${(n%16).toString(16).toUpperCase()}`,placeholder:'e.g. C8'});
+    } else {
+      const h=toHex2(n);
+      developing.push({question:`Convert <span class="mono-label">${h}</span> (hex) to denary`,answer:String(n),hint:`${parseInt(h[0],16)}×16=${parseInt(h[0],16)*16}, plus ${parseInt(h[1],16)}`,placeholder:'e.g. 163'});
+    }
+  });
+
+  // Extended: multi-step + "why is hex useful"
+  const eNums=[171,188,205,222,239,255];
+  shuffle(eNums).slice(0,4).forEach(n=>{
+    const h=toHex2(n);
+    extended.push({question:`Convert <span class="mono-label">${h}</span> (hex) to denary`,answer:String(n),hint:`${parseInt(h[0],16)}×16 + ${parseInt(h[1],16)} = ${parseInt(h[0],16)*16} + ${parseInt(h[1],16)}`,placeholder:'e.g. 239'});
+  });
+  extended.push({question:`What is the maximum value that can be stored in two hex digits?`,answer:'255',hint:`FF = 15×16+15 = 240+15 = ?`,placeholder:'e.g. 255'});
+
+  return {starter,developing,extended};
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TOPIC 4 — BINARY ↔ HEX (15 questions, 3 tiers)
+// ═══════════════════════════════════════════════════════════════
+function makeBinHexQuestions(){
+  const starter=[], developing=[], extended=[];
+
+  // Starter: simple nibble-boundary numbers
+  const sNums=[0x0F,0x10,0xA0,0x1F,0xF0];
+  sNums.forEach(n=>{
+    if(Math.random()<0.5){
+      starter.push({question:`Convert <span class="mono-label">${toBin8(n)}</span> (binary) to hex`,answer:toHex2(n),hint:`Split: <code>${toBin8(n).slice(0,4)}</code> | <code>${toBin8(n).slice(4)}</code><br>Left nibble=${parseInt(toBin8(n).slice(0,4),2)}=${parseInt(toBin8(n).slice(0,4),2).toString(16).toUpperCase()}, Right=${parseInt(toBin8(n).slice(4),2).toString(16).toUpperCase()}`,placeholder:'e.g. A0'});
+    } else {
+      starter.push({question:`Convert <span class="mono-label">${toHex2(n)}</span> (hex) to 8-bit binary`,answer:toBin8(n),hint:`${toHex2(n)[0]}=${parseInt(toHex2(n)[0],16)}=${nibble(parseInt(toHex2(n)[0],16))}, ${toHex2(n)[1]}=${parseInt(toHex2(n)[1],16)}=${nibble(parseInt(toHex2(n)[1],16))}`,placeholder:'e.g. 10100000'});
+    }
+  });
+
+  // Developing: arbitrary values
+  const dNums=[0x3C,0x5A,0x7E,0x9B,0xAD,0xC4,0xE7];
+  shuffle(dNums).slice(0,5).forEach(n=>{
+    if(Math.random()<0.5){
+      developing.push({question:`Convert <span class="mono-label">${toBin8(n)}</span> (binary) to hex`,answer:toHex2(n),hint:`Nibbles: <code>${toBin8(n).slice(0,4)}</code>=<code>${parseInt(toBin8(n).slice(0,4),2).toString(16).toUpperCase()}</code> and <code>${toBin8(n).slice(4)}</code>=<code>${parseInt(toBin8(n).slice(4),2).toString(16).toUpperCase()}</code>`,placeholder:'e.g. 3C'});
+    } else {
+      developing.push({question:`Convert <span class="mono-label">${toHex2(n)}</span> (hex) to 8-bit binary`,answer:toBin8(n),hint:`${toHex2(n)[0]}=${parseInt(toHex2(n)[0],16)}→${nibble(parseInt(toHex2(n)[0],16))}, ${toHex2(n)[1]}=${parseInt(toHex2(n)[1],16)}→${nibble(parseInt(toHex2(n)[1],16))}`,placeholder:'e.g. 00111100'});
+    }
+  });
+
+  // Extended: reverse + application
+  const eNums=[0xB5,0xD9,0xFA,0x6C,0x8E];
+  eNums.forEach(n=>{
+    extended.push({question:`Convert <span class="mono-label">${toHex2(n)}</span> (hex) to 8-bit binary`,answer:toBin8(n),hint:`${toHex2(n)[0]}=<code>${nibble(parseInt(toHex2(n)[0],16))}</code>, ${toHex2(n)[1]}=<code>${nibble(parseInt(toHex2(n)[1],16))}</code>`,placeholder:'e.g. 10110101'});
+  });
+
+  return {starter,developing,extended};
+}
+
+// ═══════════════════════════════════════════════════════════════
+// QUIZ STATE STORE
+// ═══════════════════════════════════════════════════════════════
+let QS=[{},{},{},{},{}]; // per topic state
+
+function buildQuestions(topicIdx){
+  let raw;
+  if(topicIdx===0) raw=makeUnitsQuestions();
+  else if(topicIdx===1) raw=makeBinaryQuestions();
+  else if(topicIdx===2) raw=makeAddQuestions();
+  else if(topicIdx===3) raw=makeHexQuestions();
+  else raw=makeBinHexQuestions();
+
+  // Combine into ordered list: 5 starter, 5 developing, 5 extended
+  const all=[
+    ...shuffle(raw.starter).slice(0,5).map(q=>({...q,diff:'starter'})),
+    ...shuffle(raw.developing).slice(0,5).map(q=>({...q,diff:'developing'})),
+    ...shuffle(raw.extended).slice(0,5).map(q=>({...q,diff:'extended'})),
+  ];
+
+  QS[topicIdx]={questions:all, idx:0,
+    s:{total:5,done:0}, d:{total:5,done:0}, e:{total:5,done:0}};
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TEXT QUIZ RENDER (topics 0,1,3,4)
+// ═══════════════════════════════════════════════════════════════
+function renderTextQ(topicIdx){
+  const area=document.getElementById(`quizArea${topicIdx}`);
+  const state=QS[topicIdx];
+
+  if(state.idx>=state.questions.length){
+    topicsCompleted.add(topicIdx);
+    updateProgress();
+    area.innerHTML=completionHTML(topicIdx);
+    return;
+  }
+
+  const q=state.questions[state.idx];
+  const qText=q.question||q.q;
+  const ans=(q.answer||q.a);
+  const hint=q.hint||'';
+  const ph=q.placeholder||'Type answer';
+  const qNum=state.idx+1;
+  const total=state.questions.length;
+  const {s,d,e}=state;
+
+  area.innerHTML=`<div class="card">
+    ${diffBadge(q.diff)}
+    ${diffBarHTML(s.done,s.total,d.done,d.total,e.done,e.total)}
+    <div class="q-meta">Question ${qNum} of ${total} &nbsp;·&nbsp; +${q.diff==='starter'?5:q.diff==='developing'?10:15} pts</div>
+    <div class="question-box">
+      <div class="question-text">${qText}</div>
+      <input type="text" id="ans_${topicIdx}" placeholder="${ph}" autocomplete="off"
+        onkeydown="if(event.key==='Enter')checkText(${topicIdx})">
+    </div>
+    <div class="feedback" id="fb_${topicIdx}"></div>
+    <div class="hint-box" id="hint_${topicIdx}">${hint}</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkText(${topicIdx})">Check ✓</button>
+      <button class="btn btn-hint" onclick="toggleHint('hint_${topicIdx}')">💡 Hint</button>
+      <button class="btn btn-secondary" onclick="skipText(${topicIdx})">Skip →</button>
+    </div>
+  </div>`;
+  document.getElementById(`ans_${topicIdx}`)?.focus();
+}
+
+function checkText(ti){
+  const state=QS[ti];
+  const q=state.questions[state.idx];
+  const raw=(document.getElementById(`ans_${ti}`)?.value||'').trim();
+  const user=raw.toUpperCase().replace(/\s/g,'');
+  const expected=(q.answer||q.a).toString().toUpperCase().replace(/[\s,]/g,'');
+  // also accept comma-separated in any order for ordering questions
+  const userParts=raw.toLowerCase().replace(/\s/g,'').split(',').sort().join(',');
+  const expParts=(q.answer||q.a).toString().toLowerCase().replace(/\s/g,'').split(',').sort().join(',');
+  const correct=user===expected||userParts===expParts;
+  const fb=document.getElementById(`fb_${ti}`);
+  fb.style.display='block';
+  if(correct){
+    fb.className='feedback correct';
+    fb.innerHTML=`✅ Correct! <strong>${q.answer||q.a}</strong>`;
+    advanceDiffCount(state,q.diff,'c');
+    markAnswer(true,q.diff);
+    setTimeout(()=>{state.idx++; renderTextQ(ti);},1300);
+  } else {
+    fb.className='feedback wrong';
+    fb.innerHTML=`❌ Not quite. You wrote: <strong>${raw||'(empty)'}</strong>`;
+    markAnswer(false,q.diff);
+  }
+}
+
+function skipText(ti){
+  const state=QS[ti];
+  const q=state.questions[state.idx];
+  const fb=document.getElementById(`fb_${ti}`);
+  fb.style.display='block'; fb.className='feedback info';
+  fb.innerHTML=`⏭ Answer: <strong>${q.answer||q.a}</strong>`;
+  advanceDiffCount(state,q.diff,'skip');
+  setTimeout(()=>{state.idx++; renderTextQ(ti);},1700);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ADDITION QUIZ RENDER (topic 2)
+// ═══════════════════════════════════════════════════════════════
+function renderAddQ(qIdx){
+  const area=document.getElementById('quizArea2');
+  const state=QS[2];
+  if(qIdx>=state.questions.length){
+    topicsCompleted.add(2);
+    updateProgress();
+    area.innerHTML=completionHTML(2);
+    return;
+  }
+  const q=state.questions[qIdx];
+  const qNum=qIdx+1, total=state.questions.length;
+  const {s,d,e}=state;
+  selectedOv=null;
+
+  area.innerHTML=`<div class="card">
+    ${diffBadge(q.diff)}
+    ${diffBarHTML(s.done,s.total,d.done,d.total,e.done,e.total)}
+    <div class="q-meta">Question ${qNum} of ${total} &nbsp;·&nbsp; +${q.diff==='starter'?5:q.diff==='developing'?10:15} pts</div>
+    <div class="question-box">
+      <div class="question-text">Add these two 8-bit binary numbers:</div>
+      <div class="add-grid">
+        <div class="row">${q.binA.split('').map(b=>`<span class="bit">${b}</span>`).join('')}</div>
+        <div style="text-align:left;color:var(--muted);font-size:0.85rem">+</div>
+        <div class="row">${q.binB.split('').map(b=>`<span class="bit">${b}</span>`).join('')}</div>
+        <div class="divider"></div>
+      </div>
+      <p style="font-size:0.82rem;color:var(--muted);margin-bottom:12px">(${q.a} + ${q.b})</p>
+      <input type="text" id="ans_add" placeholder="8-bit result" autocomplete="off"
+        onkeydown="if(event.key==='Enter')checkAdd(${qIdx})" style="margin-bottom:14px">
+      <div style="font-size:0.9rem;color:var(--muted);margin-bottom:6px">Does this cause an overflow error?</div>
+      <div class="ov-toggle">
+        <button class="ov-btn" id="ov-yes" onclick="setOv(true)">Yes — Overflow</button>
+        <button class="ov-btn" id="ov-no" onclick="setOv(false)">No — Fits in 8 bits</button>
+      </div>
+    </div>
+    <div class="feedback" id="fb_add"></div>
+    <div class="hint-box" id="hint_add">
+      Rules: 0+0=0 | 0+1=1 | 1+1=10 (write 0 carry 1) | 1+1+1=11 (write 1 carry 1)<br>
+      ${q.a}+${q.b}=${q.sum}. Max 8-bit = 255. ${q.ov?'⚠️ '+q.sum+' > 255 → overflow!':'✅ '+q.sum+' ≤ 255 → fits.'}
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="checkAdd(${qIdx})">Check ✓</button>
+      <button class="btn btn-hint" onclick="toggleHint('hint_add')">💡 Hint</button>
+      <button class="btn btn-secondary" onclick="skipAdd(${qIdx})">Skip →</button>
+    </div>
+  </div>`;
+  document.getElementById('ans_add')?.focus();
+}
+
+function setOv(val){
+  selectedOv=val;
+  document.getElementById('ov-yes').className='ov-btn'+(val?' selected-yes':'');
+  document.getElementById('ov-no').className='ov-btn'+(!val?' selected-no':'');
+}
+
+function checkAdd(qIdx){
+  const q=QS[2].questions[qIdx];
+  const userBin=(document.getElementById('ans_add')?.value||'').trim().replace(/\s/g,'');
+  const fb=document.getElementById('fb_add');
+  const binOk=userBin===q.binRes;
+  const ovOk=selectedOv===q.ov;
+  fb.style.display='block';
+  if(binOk&&ovOk){
+    fb.className='feedback correct';
+    fb.innerHTML=`✅ Correct! ${q.a}+${q.b}=${q.sum}. Result: <strong>${q.binRes}</strong>${q.ov?' — overflow occurred ('+q.res+' stored)':''}`;
+    advanceDiffCount(QS[2],q.diff,'c');
+    markAnswer(true,q.diff);
+    setTimeout(()=>{QS[2].idx=qIdx+1; renderAddQ(qIdx+1);},1500);
+  } else {
+    fb.className='feedback wrong';
+    let msg='❌ ';
+    if(!binOk) msg+=`Binary should be <strong>${q.binRes}</strong>. `;
+    if(!ovOk) msg+=q.ov?`This IS an overflow (${q.sum}>255).`:`No overflow (${q.sum}≤255).`;
+    fb.innerHTML=msg;
+    markAnswer(false,q.diff);
+  }
+}
+
+function skipAdd(qIdx){
+  const q=QS[2].questions[qIdx];
+  const fb=document.getElementById('fb_add');
+  fb.style.display='block'; fb.className='feedback info';
+  fb.innerHTML=`Answer: <strong>${q.binRes}</strong>. ${q.a}+${q.b}=${q.sum}. ${q.ov?'⚠️ Overflow!':'No overflow.'}`;
+  advanceDiffCount(QS[2],q.diff,'skip');
+  setTimeout(()=>{QS[2].idx=qIdx+1; renderAddQ(qIdx+1);},2000);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// DIFF COUNT HELPER
+// ═══════════════════════════════════════════════════════════════
+function advanceDiffCount(state,diff,type){
+  if(diff==='starter') state.s.done++;
+  else if(diff==='developing') state.d.done++;
+  else state.e.done++;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// COMPLETION CARD
+// ═══════════════════════════════════════════════════════════════
+function completionHTML(ti){
+  const state=QS[ti];
+  const done=state.s.done+state.d.done+state.e.done;
+  const total=state.questions.length;
+  return `<div class="card complete-card">
+    <div style="font-size:2rem">🏆</div>
+    <h2 style="text-align:center;color:var(--accent)">Topic Complete!</h2>
+    <p style="text-align:center">You worked through all ${total} questions including Starter, Developing and Extended levels.</p>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="nextTopic(${ti})">Next Topic →</button>
+      <button class="btn btn-secondary" onclick="retryTopic(${ti})">🔁 Retry Topic</button>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// HINT TOGGLE
+// ═══════════════════════════════════════════════════════════════
+function toggleHint(id){
+  const el=document.getElementById(id);
+  if(el) el.style.display=el.style.display==='block'?'none':'block';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// NAV & PROGRESS
+// ═══════════════════════════════════════════════════════════════
+function updateProgress(){
+  const done=topicsCompleted.size;
+  document.getElementById('progFill').style.width=(done/5*100)+'%';
+  document.getElementById('progLabel').textContent=`${done} / 5 topics`;
+  for(let i=0;i<5;i++){
+    const t=document.getElementById(`tab${i}`);
+    if(topicsCompleted.has(i)) t?.classList.add('completed');
+  }
+  if(done>=5) setTimeout(showFinal,600);
+}
+
+function showTopic(idx){
+  for(let i=0;i<5;i++){
+    document.getElementById(`topic${i}`).style.display='none';
+    document.getElementById(`tab${i}`)?.classList.remove('active');
+  }
+  document.getElementById('finalScreen').style.display='none';
+  document.getElementById(`topic${idx}`).style.display='block';
+  document.getElementById(`tab${idx}`)?.classList.add('active');
+  currentTopic=idx;
+  initTopic(idx);
+}
+
+function initTopic(idx){
+  buildQuestions(idx);
+  if(idx===2) renderAddQ(0);
+  else renderTextQ(idx);
+}
+
+function nextTopic(from){
+  const next=from+1;
+  if(next<5) showTopic(next); else showFinal();
+}
+
+function retryTopic(idx){
+  topicsCompleted.delete(idx);
+  updateProgress();
+  initTopic(idx);
+}
+
+function showFinal(){
+  for(let i=0;i<5;i++) document.getElementById(`topic${i}`).style.display='none';
+  document.getElementById('finalScreen').style.display='block';
+  const total=(correct+wrong)||1;
+  const pct=Math.round(correct/total*100);
+  document.getElementById('finalScore').textContent=score+' pts';
+  let grade,msg;
+  if(pct>=90){grade='Grade 9 ★★★';msg='Outstanding! You have mastered all areas of data representation.';}
+  else if(pct>=80){grade='Grade 8 ★★';msg='Excellent work across all difficulty levels!';}
+  else if(pct>=70){grade='Grade 7 ★';msg='Great effort — strong understanding with a few areas to revisit.';}
+  else if(pct>=60){grade='Grade 5-6';msg='Good progress — review the Extended questions and try again.';}
+  else{grade='Grade 3-4';msg='Keep going — re-read the lesson panels and practise the Starter questions.';}
+  document.getElementById('finalGrade').textContent=grade;
+  document.getElementById('finalMsg').textContent=msg;
+  const ds=document.getElementById('diffSummary');
+  ds.innerHTML=[
+    `<div class="diff-summary-chip" style="background:rgba(16,185,129,0.15);color:#34d399">Starter: ${diffCounts.starter.c}✅ ${diffCounts.starter.w}❌</div>`,
+    `<div class="diff-summary-chip" style="background:rgba(245,158,11,0.15);color:#fbbf24">Developing: ${diffCounts.developing.c}✅ ${diffCounts.developing.w}❌</div>`,
+    `<div class="diff-summary-chip" style="background:rgba(244,63,94,0.15);color:#fb7185">Extended: ${diffCounts.extended.c}✅ ${diffCounts.extended.w}❌</div>`,
+  ].join('');
+  const m=String(Math.floor(timerSec/60)).padStart(2,'0');
+  const s=String(timerSec%60).padStart(2,'0');
+  document.getElementById('finalTime').textContent=`Completed in ${m}:${s} · Best streak: ${maxStreak}`;
+}
+
+function resetGame(){
+  score=0;correct=0;wrong=0;streak=0;maxStreak=0;
+  diffCounts={starter:{c:0,w:0},developing:{c:0,w:0},extended:{c:0,w:0}};
+  topicsCompleted.clear();
+  timerSec=0; clearInterval(timerInterval); timerInterval=null; startTimer();
+  updateStats();
+  for(let i=0;i<5;i++){
+    document.getElementById(`tab${i}`)?.classList.remove('completed','active');
+  }
+  document.getElementById('finalScreen').style.display='none';
+  document.getElementById('progFill').style.width='0%';
+  document.getElementById('progLabel').textContent='0 / 5 topics';
+  showTopic(0);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BIT DEMO
+// ═══════════════════════════════════════════════════════════════
+document.querySelectorAll('#demoBits .bit-box').forEach(box=>{
+  box.addEventListener('click',()=>{
+    box.classList.toggle('on');
+    box.querySelector('.bv').textContent=box.classList.contains('on')?'1':'0';
+    const total=[...document.querySelectorAll('#demoBits .bit-box')]
+      .reduce((s,b)=>s+(b.classList.contains('on')?parseInt(b.dataset.w):0),0);
+    document.getElementById('demoTotal').textContent=total;
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+initTopic(0);
+</script>
+</body>
+</html>
