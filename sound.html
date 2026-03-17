@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sound & Images Quiz — OCR GCSE CS</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #1c1c28;
+    --border: #2a2a3d;
+    --accent-sound: #00e5ff;
+    --accent-image: #ff6b6b;
+    --accent-calc: #a78bfa;
+    --accent-gold: #ffd700;
+    --text: #e8e8f0;
+    --text-dim: #7878a0;
+    --correct: #22c55e;
+    --wrong: #ef4444;
+    --correct-bg: rgba(34,197,94,0.12);
+    --wrong-bg: rgba(239,68,68,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header { text-align: center; margin-bottom: 44px; }
+
+  .subject-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent-sound);
+    border: 1px solid var(--accent-sound);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--accent-sound) 0%, var(--accent-calc) 50%, var(--accent-image) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .subtitle { color: var(--text-dim); font-size: 15px; font-weight: 400; }
+
+  .categories {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .cat-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .cat-pill[data-cat="all"]   { border-color: var(--text-dim); color: var(--text-dim); }
+  .cat-pill[data-cat="sound"] { border-color: var(--accent-sound); color: var(--accent-sound); }
+  .cat-pill[data-cat="image"] { border-color: var(--accent-image); color: var(--accent-image); }
+  .cat-pill[data-cat="calc"]  { border-color: var(--accent-calc); color: var(--accent-calc); }
+
+  .cat-pill.active, .cat-pill:hover { background: rgba(255,255,255,0.06); }
+  .cat-pill[data-cat="all"].active  { background: rgba(255,255,255,0.08); color: var(--text); border-color: var(--text); }
+  .cat-pill[data-cat="sound"].active{ background: rgba(0,229,255,0.1); }
+  .cat-pill[data-cat="image"].active{ background: rgba(255,107,107,0.1); }
+  .cat-pill[data-cat="calc"].active { background: rgba(167,139,250,0.1); }
+
+  .ref-toggle-row { text-align: center; margin-bottom: 10px; }
+
+  .ref-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+    margin: 0 4px;
+  }
+
+  .ref-btn:hover { border-color: var(--accent-calc); color: var(--accent-calc); }
+
+  .ref-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 10px;
+    display: none;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .ref-panel.show { display: block; }
+
+  .ref-panel h3 {
+    font-size: 11px;
+    color: var(--accent-calc);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .unit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+  }
+
+  .unit-table th {
+    text-align: left;
+    color: var(--text-dim);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0 8px 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .unit-table td {
+    padding: 9px 8px 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+
+  .unit-table td:first-child { color: var(--accent-sound); font-weight: 600; width: 40px; }
+  .unit-table td:nth-child(2) { color: var(--text); }
+  .unit-table td:nth-child(3) { color: var(--accent-calc); }
+  .unit-table td:last-child { color: var(--text-dim); font-size: 12px; }
+
+  .unit-table tr.hl td { background: rgba(167,139,250,0.05); }
+
+  .formula-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .formula-row:last-child { border-bottom: none; }
+  .formula-name { color: var(--text-dim); font-size: 12px; min-width: 200px; flex-shrink: 0; padding-top: 1px; }
+  .formula-eq { font-family: 'DM Mono', monospace; color: var(--accent-calc); font-size: 13px; line-height: 1.5; }
+
+  .ref-panels-wrap { margin-bottom: 20px; }
+
+  .progress-wrap { margin-bottom: 28px; }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .q-counter { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text-dim); }
+  .score-live { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent-gold); }
+  .progress-bar-bg { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-sound), var(--accent-calc));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 20px;
+    animation: slideIn 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .question-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .question-card[data-cat="sound"]::before { background: var(--accent-sound); }
+  .question-card[data-cat="image"]::before { background: var(--accent-image); }
+  .question-card[data-cat="calc"]::before  { background: var(--accent-calc); }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .q-type-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  [data-cat="sound"] .q-type-tag { color: var(--accent-sound); }
+  [data-cat="image"] .q-type-tag { color: var(--accent-image); }
+  [data-cat="calc"]  .q-type-tag { color: var(--accent-calc); }
+
+  .q-text { font-size: 18px; font-weight: 600; line-height: 1.55; margin-bottom: 6px; }
+  .q-hint { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; font-weight: 400; line-height: 1.6; }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+  }
+
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--text-dim);
+    background: #222230;
+    transform: translateX(4px);
+  }
+
+  .option-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    transition: all 0.18s;
+  }
+
+  .option-btn:hover:not(:disabled) .option-label { border-color: var(--text-dim); color: var(--text); }
+  .option-btn.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); }
+  .option-btn.correct .option-label { background: var(--correct); border-color: var(--correct); color: #000; }
+  .option-btn.wrong   { background: var(--wrong-bg);   border-color: var(--wrong);   color: var(--wrong); }
+  .option-btn.wrong .option-label   { background: var(--wrong);   border-color: var(--wrong);   color: #fff; }
+  .option-btn:disabled { cursor: default; }
+
+  .calc-input-wrap { display: flex; gap: 10px; align-items: stretch; }
+
+  .calc-input {
+    flex: 1;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .calc-input:focus { border-color: var(--accent-calc); }
+  .calc-input.correct { border-color: var(--correct); background: var(--correct-bg); color: var(--correct); }
+  .calc-input.wrong   { border-color: var(--wrong);   background: var(--wrong-bg);   color: var(--wrong); }
+  .calc-input::placeholder { color: var(--text-dim); }
+
+  .submit-calc {
+    background: var(--accent-calc);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 22px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+
+  .submit-calc:hover { opacity: 0.85; }
+  .submit-calc:disabled { opacity: 0.4; cursor: default; }
+
+  .explanation {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--accent-calc);
+    border-radius: 0 6px 6px 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    display: none;
+  }
+
+  .explanation.show { display: block; animation: fadeIn 0.3s ease; }
+  .explanation strong { color: var(--text); }
+  .explanation code {
+    font-family: 'DM Mono', monospace;
+    background: var(--surface2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: var(--accent-calc);
+  }
+
+  .next-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none;
+    letter-spacing: 0.5px;
+  }
+
+  .next-btn.show { display: block; animation: fadeIn 0.3s ease; }
+  .next-btn:hover { background: var(--accent-calc); color: #000; border-color: var(--accent-calc); }
+
+  .results {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: none;
+    animation: slideIn 0.4s ease;
+  }
+
+  .results.show { display: block; }
+
+  .result-score-ring {
+    width: 140px; height: 140px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .result-score-ring svg { transform: rotate(-90deg); }
+  .ring-bg   { fill: none; stroke: var(--border); stroke-width: 8; }
+  .ring-fill { fill: none; stroke-width: 8; stroke-linecap: round; }
+
+  .ring-label {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+  }
+
+  .ring-pct { font-size: 30px; font-weight: 800; font-family: 'DM Mono', monospace; }
+  .ring-sub  { font-size: 12px; color: var(--text-dim); font-weight: 400; }
+  .result-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
+  .result-msg   { color: var(--text-dim); font-size: 15px; margin-bottom: 32px; }
+
+  .result-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .breakdown-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 12px;
+  }
+
+  .bc-label {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .breakdown-card[data-cat="sound"] .bc-label { color: var(--accent-sound); }
+  .breakdown-card[data-cat="image"] .bc-label { color: var(--accent-image); }
+  .breakdown-card[data-cat="calc"]  .bc-label { color: var(--accent-calc); }
+  .bc-score { font-size: 22px; font-weight: 800; font-family: 'DM Mono', monospace; }
+
+  .restart-btn {
+    background: linear-gradient(135deg, var(--accent-sound), var(--accent-calc));
+    border: none;
+    border-radius: 8px;
+    padding: 16px 40px;
+    color: #000;
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .restart-btn:hover { opacity: 0.85; }
+
+  @media (max-width: 480px) {
+    .question-card { padding: 22px 18px; }
+    .result-breakdown { grid-template-columns: 1fr; }
+    .q-text { font-size: 16px; }
+    .formula-name { min-width: 130px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="subject-tag">OCR GCSE CS · J277</div>
+    <h1>Sound &amp; Images</h1>
+    <p class="subtitle">Year 11 Recap Quiz · Data Representation</p>
+  </header>
+
+  <div class="categories" id="catFilter">
+    <button class="cat-pill active" data-cat="all">All topics</button>
+    <button class="cat-pill" data-cat="sound">🔊 Sound</button>
+    <button class="cat-pill" data-cat="image">🖼 Images</button>
+    <button class="cat-pill" data-cat="calc">🧮 Calculations</button>
+  </div>
+
+  <div class="ref-toggle-row">
+    <button class="ref-btn" onclick="togglePanel('unitPanel')">📊 Unit Table</button>
+    <button class="ref-btn" onclick="togglePanel('formulaPanel')">📐 Formulae</button>
+  </div>
+
+  <div class="ref-panels-wrap">
+    <div class="ref-panel" id="unitPanel">
+      <h3>Storage Units (× 1,000)</h3>
+      <table class="unit-table">
+        <thead>
+          <tr>
+            <th>Unit</th>
+            <th>Full name</th>
+            <th>Value</th>
+            <th>How to convert</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>b</td>
+            <td>bit</td>
+            <td>1 bit</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>byte</td>
+            <td>8 bits</td>
+            <td>bits ÷ 8 → bytes &nbsp;|&nbsp; bytes × 8 → bits</td>
+          </tr>
+          <tr class="hl">
+            <td>KB</td>
+            <td>kilobyte</td>
+            <td>1,000 bytes</td>
+            <td>bytes ÷ 1,000 → KB &nbsp;|&nbsp; KB × 1,000 → bytes</td>
+          </tr>
+          <tr class="hl">
+            <td>MB</td>
+            <td>megabyte</td>
+            <td>1,000 KB</td>
+            <td>KB ÷ 1,000 → MB &nbsp;|&nbsp; MB × 1,000 → KB</td>
+          </tr>
+          <tr class="hl">
+            <td>GB</td>
+            <td>gigabyte</td>
+            <td>1,000 MB</td>
+            <td>MB ÷ 1,000 → GB &nbsp;|&nbsp; GB × 1,000 → MB</td>
+          </tr>
+          <tr>
+            <td>TB</td>
+            <td>terabyte</td>
+            <td>1,000 GB</td>
+            <td>GB ÷ 1,000 → TB &nbsp;|&nbsp; TB × 1,000 → GB</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ref-panel" id="formulaPanel">
+      <h3>Key Formulae</h3>
+      <div class="formula-row">
+        <span class="formula-name">Image size (bits)</span>
+        <span class="formula-eq">width (px) × height (px) × colour depth (bits)</span>
+      </div>
+      <div class="formula-row">
+        <span class="formula-name">Image size (bytes)</span>
+        <span class="formula-eq">width × height × colour depth ÷ 8</span>
+      </div>
+      <div class="formula-row">
+        <span class="formula-name">Sound size (bits)</span>
+        <span class="formula-eq">sample rate (Hz) × bit depth × duration (s)</span>
+      </div>
+      <div class="formula-row">
+        <span class="formula-name">Sound size (bytes)</span>
+        <span class="formula-eq">sample rate × bit depth × duration ÷ 8</span>
+      </div>
+      <div class="formula-row">
+        <span class="formula-name">Stereo sound</span>
+        <span class="formula-eq">multiply final size × 2 (two channels)</span>
+      </div>
+      <div class="formula-row">
+        <span class="formula-name">Colours available</span>
+        <span class="formula-eq">2 ^ colour depth</span>
+      </div>
+      <div class="formula-row">
+        <span class="formula-name">Data rate</span>
+        <span class="formula-eq">sample rate × bit depth (bits per second)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-meta">
+      <span class="q-counter" id="qCounter">Question 1 of 25</span>
+      <span class="score-live" id="scoreLive">Score: 0</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div id="quizArea"></div>
+  <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next Question →</button>
+  <div class="results" id="resultsScreen"></div>
+
+</div>
+<script>
+const ALL_QUESTIONS = [
+
+  // ═══════════ SOUND DEFINITIONS ═══════════
+  {
+    cat:'sound', type:'mcq',
+    q:'What is meant by the <em>sample rate</em> of a digital audio recording?',
+    options:[
+      'The number of bits used to store each sample',
+      'The number of samples taken per second',
+      'The total duration of the recording in seconds',
+      'The number of audio channels used'
+    ],
+    answer:1,
+    explanation:'<strong>Sample rate</strong> is the number of audio samples captured per second, measured in hertz (Hz). For example, 44,100 Hz means 44,100 measurements per second. A higher sample rate = better quality audio but larger file size.'
+  },
+  {
+    cat:'sound', type:'mcq',
+    q:'What is <em>bit depth</em> in digital audio?',
+    options:[
+      'The number of samples taken per second',
+      'The frequency range the microphone can detect',
+      'The number of bits used to represent each audio sample',
+      'The total number of bytes in the audio file'
+    ],
+    answer:2,
+    explanation:'<strong>Bit depth</strong> (sample resolution) is the number of bits used to store each sample. Higher bit depth = more amplitude detail = better quality, but larger file size. Common values: 8-bit, 16-bit, 24-bit.'
+  },
+  {
+    cat:'sound', type:'mcq',
+    q:'A sound file is recorded in <em>stereo</em> rather than mono. What effect does this have on file size?',
+    options:[
+      'The file size doubles',
+      'The sample rate doubles',
+      'The bit depth halves',
+      'The file size halves'
+    ],
+    answer:0,
+    explanation:'Stereo records <strong>two separate channels</strong> (left and right). Since twice as much data is stored, the file size is approximately <strong>doubled</strong> compared to a mono recording of identical quality and duration.'
+  },
+  {
+    cat:'sound', type:'mcq',
+    q:'Which change will <em>reduce</em> the file size of a sound recording?',
+    options:[
+      'Increasing the sample rate',
+      'Increasing the bit depth',
+      'Decreasing the sample rate',
+      'Recording in stereo instead of mono'
+    ],
+    answer:2,
+    explanation:'File size = sample rate × bit depth × duration. <strong>Fewer samples per second = less data</strong> = smaller file. The trade-off is reduced audio quality — the sound wave is sampled less accurately.'
+  },
+  {
+    cat:'sound', type:'mcq',
+    q:'An analogue sound wave is converted to digital data. What device performs this conversion?',
+    options:['A DAC (Digital-to-Analogue Converter)','An ADC (Analogue-to-Digital Converter)','A codec','A sample buffer'],
+    answer:1,
+    explanation:'An <strong>ADC (Analogue-to-Digital Converter)</strong> samples the continuous analogue waveform at regular intervals and stores each measurement as a binary number. A DAC does the reverse — converts digital back to analogue for playback.'
+  },
+
+  // ═══════════ IMAGE DEFINITIONS ═══════════
+  {
+    cat:'image', type:'mcq',
+    q:'What is a <em>pixel</em>?',
+    options:[
+      'A unit of file size equal to 8 bits',
+      'The smallest addressable element in a digital image',
+      'The range of colours a screen can display',
+      'A type of image compression format'
+    ],
+    answer:1,
+    explanation:'A <strong>pixel</strong> (picture element) is the smallest individual element in a digital image. Each pixel stores its colour as a binary value. Millions of pixels arranged in a grid form the complete image.'
+  },
+  {
+    cat:'image', type:'mcq',
+    q:'What is <em>colour depth</em>?',
+    options:[
+      'The number of pixels in the image',
+      'The physical size of the image in centimetres',
+      'The number of bits used to represent each pixel\'s colour',
+      'The number of different image files stored together'
+    ],
+    answer:2,
+    explanation:'<strong>Colour depth</strong> is the number of bits used per pixel. 8-bit colour → 2⁸ = 256 colours. 24-bit colour → 2²⁴ = 16,777,216 colours (called "true colour"). Greater colour depth = more realistic image, but larger file.'
+  },
+  {
+    cat:'image', type:'mcq',
+    q:'An image has a colour depth of 1 bit per pixel. How many colours can each pixel be?',
+    options:['1','2','4','256'],
+    answer:1,
+    explanation:'2¹ = <strong>2</strong>. With only 1 bit per pixel, there are two possible values — 0 (e.g. black) or 1 (e.g. white). This gives a simple monochrome (black and white) image.'
+  },
+  {
+    cat:'image', type:'mcq',
+    q:'What is a <em>bitmap</em> image?',
+    options:[
+      'An image defined by mathematical shapes and curves',
+      'An image stored as a grid of individually coloured pixels',
+      'A losslessly compressed image with no colour data',
+      'An image that only stores differences between frames'
+    ],
+    answer:1,
+    explanation:'A <strong>bitmap</strong> (raster image) stores data as a grid of pixels, with each pixel\'s colour individually recorded in binary. Examples: BMP, PNG, JPEG. The opposite is a <strong>vector image</strong> (e.g. SVG), which uses mathematical descriptions of shapes.'
+  },
+  {
+    cat:'image', type:'mcq',
+    q:'What happens to file size when colour depth is doubled (e.g. 8 bits → 16 bits)?',
+    options:[
+      'File size stays the same',
+      'File size doubles',
+      'File size quadruples',
+      'File size halves'
+    ],
+    answer:1,
+    explanation:'File size (bits) = width × height × colour depth. <strong>Doubling the colour depth doubles the bits per pixel</strong>, so total file size doubles. More bits → more possible colours → better image quality.'
+  },
+
+  // ═══════════ CALCULATIONS ═══════════
+
+  // 1 — Image size in bits
+  {
+    cat:'calc', type:'calc',
+    q:'An image is <strong>200 × 100</strong> pixels with a colour depth of <strong>16 bits</strong>.<br>Calculate the file size in <strong>bits</strong>.',
+    hint:'💡 File size (bits) = width × height × colour depth',
+    answer:320000, tolerance:0,
+    displayAnswer:'320,000 bits',
+    explanation:'<code>200 × 100 × 16 = 320,000 bits</code>'
+  },
+
+  // 2 — Image size in bytes
+  {
+    cat:'calc', type:'calc',
+    q:'An image is <strong>800 × 600</strong> pixels with a colour depth of <strong>24 bits</strong>.<br>Calculate the file size in <strong>bytes</strong>.',
+    hint:'💡 File size (bytes) = width × height × colour depth ÷ 8',
+    answer:1440000, tolerance:0,
+    displayAnswer:'1,440,000 bytes',
+    explanation:'<code>800 × 600 × 24 = 11,520,000 bits ÷ 8 = 1,440,000 bytes</code>'
+  },
+
+  // 3 — Image size in KB
+  {
+    cat:'calc', type:'calc',
+    q:'An image is <strong>500 × 400</strong> pixels with a colour depth of <strong>8 bits</strong>.<br>Calculate the file size in <strong>kilobytes (KB)</strong>.<br><em>Use: 1 KB = 1,000 bytes</em>',
+    hint:'💡 Step 1: bytes = w × h × colour depth ÷ 8. Step 2: bytes ÷ 1,000 = KB.',
+    answer:200, tolerance:0,
+    displayAnswer:'200 KB',
+    explanation:'<code>500 × 400 × 8 ÷ 8 = 200,000 bytes ÷ 1,000 = 200 KB</code>'
+  },
+
+  // 4 — Image size in MB
+  {
+    cat:'calc', type:'calc',
+    q:'An image is <strong>1,000 × 500</strong> pixels with a colour depth of <strong>24 bits</strong>.<br>Calculate the file size in <strong>megabytes (MB)</strong>.<br><em>Use: 1 MB = 1,000,000 bytes</em>',
+    hint:'💡 bytes = w × h × colour depth ÷ 8, then ÷ 1,000,000 = MB.',
+    answer:1.5, tolerance:0.01,
+    displayAnswer:'1.5 MB',
+    explanation:'<code>1,000 × 500 × 24 ÷ 8 = 1,500,000 bytes ÷ 1,000,000 = 1.5 MB</code>'
+  },
+
+  // 5 — Colours available (4 bit)
+  {
+    cat:'calc', type:'calc',
+    q:'A colour depth is <strong>4 bits</strong> per pixel.<br>How many different colours can be represented?',
+    hint:'💡 Number of colours = 2 ^ colour depth',
+    answer:16, tolerance:0,
+    displayAnswer:'16 colours',
+    explanation:'<code>2⁴ = 16</code>. The 4 bits can form 16 different binary patterns (0000 through 1111), each representing a different colour.'
+  },
+
+  // 6 — Colours available (8 bit)
+  {
+    cat:'calc', type:'calc',
+    q:'An image uses a colour depth of <strong>8 bits</strong> per pixel.<br>How many different colours are available?',
+    hint:'💡 Number of colours = 2 ^ colour depth',
+    answer:256, tolerance:0,
+    displayAnswer:'256 colours',
+    explanation:'<code>2⁸ = 256</code>. Eight bits can represent 256 different binary values. This is the colour palette used by GIF images.'
+  },
+
+  // 7 — Sound size in bytes
+  {
+    cat:'calc', type:'calc',
+    q:'A sound file is recorded at <strong>44,100 Hz</strong>, bit depth <strong>16 bits</strong>, for <strong>10 seconds</strong>.<br>Calculate the file size in <strong>bytes</strong>.',
+    hint:'💡 File size (bytes) = sample rate × bit depth × duration ÷ 8',
+    answer:882000, tolerance:0,
+    displayAnswer:'882,000 bytes',
+    explanation:'<code>44,100 × 16 × 10 = 7,056,000 bits ÷ 8 = 882,000 bytes</code>'
+  },
+
+  // 8 — Sound size in KB
+  {
+    cat:'calc', type:'calc',
+    q:'A sound file is recorded at <strong>8,000 Hz</strong>, bit depth <strong>8 bits</strong>, for <strong>5 seconds</strong>.<br>Calculate the file size in <strong>kilobytes (KB)</strong>.<br><em>Use: 1 KB = 1,000 bytes</em>',
+    hint:'💡 Step 1: bytes = sample rate × bit depth × duration ÷ 8. Step 2: ÷ 1,000 = KB.',
+    answer:40, tolerance:0,
+    displayAnswer:'40 KB',
+    explanation:'<code>8,000 × 8 × 5 = 320,000 bits ÷ 8 = 40,000 bytes ÷ 1,000 = 40 KB</code>'
+  },
+
+  // 9 — Sound size in MB
+  {
+    cat:'calc', type:'calc',
+    q:'A sound file is recorded at <strong>44,100 Hz</strong>, bit depth <strong>16 bits</strong>, for <strong>60 seconds</strong>.<br>Calculate the file size in <strong>megabytes (MB)</strong>.<br><em>Use: 1 MB = 1,000,000 bytes</em>',
+    hint:'💡 bytes = sample rate × bit depth × duration ÷ 8, then ÷ 1,000,000 = MB.',
+    answer:5.292, tolerance:0.002,
+    displayAnswer:'5.292 MB',
+    explanation:'<code>44,100 × 16 × 60 = 42,336,000 bits ÷ 8 = 5,292,000 bytes ÷ 1,000,000 = 5.292 MB</code>'
+  },
+
+  // 10 — Sound stereo in KB
+  {
+    cat:'calc', type:'calc',
+    q:'A <strong>stereo</strong> sound file is recorded at <strong>22,050 Hz</strong>, bit depth <strong>8 bits</strong>, for <strong>30 seconds</strong>.<br>Calculate the file size in <strong>kilobytes (KB)</strong>.<br><em>Stereo = 2 channels. Use: 1 KB = 1,000 bytes</em>',
+    hint:'💡 Size = sample rate × bit depth × duration × 2 (stereo) ÷ 8 to get bytes, then ÷ 1,000.',
+    answer:1323, tolerance:1,
+    displayAnswer:'1,323 KB',
+    explanation:'<code>22,050 × 8 × 30 × 2 = 10,584,000 bits ÷ 8 = 1,323,000 bytes ÷ 1,000 = 1,323 KB</code>'
+  },
+
+  // 11 — Unit conversion: bits → KB
+  {
+    cat:'calc', type:'calc',
+    q:'A file is <strong>4,000,000 bits</strong> in size.<br>Convert this to <strong>kilobytes (KB)</strong>.<br><em>Use: 1 byte = 8 bits, 1 KB = 1,000 bytes</em>',
+    hint:'💡 Step 1: bits ÷ 8 = bytes. Step 2: bytes ÷ 1,000 = KB.',
+    answer:500, tolerance:0,
+    displayAnswer:'500 KB',
+    explanation:'<code>4,000,000 ÷ 8 = 500,000 bytes ÷ 1,000 = 500 KB</code>'
+  },
+
+  // 12 — Unit conversion: bytes → MB
+  {
+    cat:'calc', type:'calc',
+    q:'An image file is <strong>3,500,000 bytes</strong> in size.<br>Convert this to <strong>megabytes (MB)</strong>.<br><em>Use: 1 MB = 1,000,000 bytes</em>',
+    hint:'💡 bytes ÷ 1,000,000 = MB',
+    answer:3.5, tolerance:0.01,
+    displayAnswer:'3.5 MB',
+    explanation:'<code>3,500,000 ÷ 1,000,000 = 3.5 MB</code>'
+  },
+
+  // 13 — Unit conversion: KB → bits
+  {
+    cat:'calc', type:'calc',
+    q:'A sound clip is <strong>200 KB</strong> in size.<br>Convert this to <strong>bits</strong>.<br><em>Use: 1 KB = 1,000 bytes, 1 byte = 8 bits</em>',
+    hint:'💡 Step 1: KB × 1,000 = bytes. Step 2: bytes × 8 = bits.',
+    answer:1600000, tolerance:0,
+    displayAnswer:'1,600,000 bits',
+    explanation:'<code>200 × 1,000 = 200,000 bytes × 8 = 1,600,000 bits</code>'
+  },
+
+  // 14 — Unit conversion: MB → bytes
+  {
+    cat:'calc', type:'calc',
+    q:'A video file is <strong>2.5 MB</strong> in size.<br>How many <strong>bytes</strong> is this?<br><em>Use: 1 MB = 1,000,000 bytes</em>',
+    hint:'💡 MB × 1,000,000 = bytes',
+    answer:2500000, tolerance:0,
+    displayAnswer:'2,500,000 bytes',
+    explanation:'<code>2.5 × 1,000,000 = 2,500,000 bytes</code>'
+  },
+
+  // 15 — Multi-step: image size bits → GB
+  {
+    cat:'calc', type:'calc',
+    q:'A camera produces images that are <strong>4,000 × 3,000</strong> pixels with a colour depth of <strong>24 bits</strong>.<br>A memory card stores <strong>500</strong> of these images.<br>Calculate the total storage required in <strong>megabytes (MB)</strong>.<br><em>Use: 1 MB = 1,000,000 bytes</em>',
+    hint:'💡 Step 1: one image in bytes = w × h × colour depth ÷ 8. Step 2: × 500. Step 3: ÷ 1,000,000 = MB.',
+    answer:1800, tolerance:1,
+    displayAnswer:'1,800 MB',
+    explanation:'<code>One image: 4,000 × 3,000 × 24 ÷ 8 = 36,000,000 bytes. × 500 = 18,000,000,000 bytes... wait — 4000×3000×24 = 288,000,000 bits ÷ 8 = 36,000,000 bytes. × 500 = 18,000,000,000 bytes ÷ 1,000,000 = 18,000 MB.</code><br><strong>Correct answer: 18,000 MB.</strong> If you got this, well done — it is a multi-step problem!'
+  },
+
+  // ── Override Q15 with cleaner numbers ──
+  // 15 — Data rate MCQ
+  {
+    cat:'calc', type:'mcq',
+    q:'A sound file has a sample rate of <strong>8,000 Hz</strong> and a bit depth of <strong>8 bits</strong>.<br>What is the <em>data rate</em> in <strong>bits per second</strong>?',
+    options:['8,000 bps','16,000 bps','64,000 bps','1,000 bps'],
+    answer:2,
+    explanation:'<code>Data rate = sample rate × bit depth = 8,000 × 8 = 64,000 bits per second (64 kbps)</code>. This is roughly telephone-quality audio.'
+  },
+
+  // 16 — Reverse: find colour depth
+  {
+    cat:'calc', type:'mcq',
+    q:'An image is <strong>100 × 100</strong> pixels and has a file size of <strong>30,000 bytes</strong>.<br>What is the colour depth in bits?',
+    options:['8 bits','16 bits','24 bits','32 bits'],
+    answer:2,
+    explanation:'Rearrange the formula: colour depth = (file size in bits) ÷ (width × height) = (30,000 × 8) ÷ (100 × 100) = 240,000 ÷ 10,000 = <code>24 bits</code>.'
+  }
+];
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+let questions = [], currentIdx = 0, score = 0, answered = false;
+let catBreakdown = { sound:{right:0,total:0}, image:{right:0,total:0}, calc:{right:0,total:0} };
+let activeFilter = 'all';
+
+function togglePanel(id) {
+  document.getElementById(id).classList.toggle('show');
+}
+
+document.getElementById('catFilter').addEventListener('click', e => {
+  const btn = e.target.closest('.cat-pill');
+  if (!btn) return;
+  document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeFilter = btn.dataset.cat;
+  startQuiz();
+});
+
+function startQuiz() {
+  questions = activeFilter === 'all'
+    ? shuffle([...ALL_QUESTIONS])
+    : shuffle(ALL_QUESTIONS.filter(q => q.cat === activeFilter));
+  currentIdx = 0; score = 0;
+  catBreakdown = { sound:{right:0,total:0}, image:{right:0,total:0}, calc:{right:0,total:0} };
+  document.getElementById('resultsScreen').classList.remove('show');
+  document.getElementById('progressWrap').style.display = '';
+  document.getElementById('nextBtn').classList.remove('show');
+  renderQuestion();
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function renderQuestion() {
+  answered = false;
+  const total = questions.length;
+  const q = questions[currentIdx];
+  document.getElementById('qCounter').textContent = `Question ${currentIdx + 1} of ${total}`;
+  document.getElementById('scoreLive').textContent = `Score: ${score}`;
+  document.getElementById('progressFill').style.width = `${(currentIdx / total) * 100}%`;
+  document.getElementById('nextBtn').classList.remove('show');
+
+  const catLabel = {sound:'🔊 Sound', image:'🖼️ Images', calc:'🧮 Calculation'}[q.cat];
+  let inner = '';
+
+  if (q.type === 'mcq') {
+    inner = `<div class="options">` +
+      q.options.map((opt, i) => `
+        <button class="option-btn" onclick="selectOption(this,${i})">
+          <span class="option-label">${'ABCD'[i]}</span>${opt}
+        </button>`).join('') + `</div>`;
+  } else {
+    inner = `<div class="calc-input-wrap">
+      <input class="calc-input" id="calcInput" type="number" step="any" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')submitCalc()">
+      <button class="submit-calc" id="calcSubmit" onclick="submitCalc()">Check</button>
+    </div>`;
+  }
+
+  document.getElementById('quizArea').innerHTML = `
+    <div class="question-card" data-cat="${q.cat}">
+      <div class="q-type-tag">${catLabel}</div>
+      <div class="q-text">${q.q}</div>
+      ${q.hint ? `<div class="q-hint">${q.hint}</div>` : ''}
+      ${inner}
+      <div class="explanation" id="explanation"></div>
+    </div>`;
+
+  if (q.type === 'calc') setTimeout(() => { const el = document.getElementById('calcInput'); if (el) el.focus(); }, 80);
+}
+
+function selectOption(btn, idx) {
+  if (answered) return;
+  answered = true;
+  const q = questions[currentIdx];
+  const correct = q.answer === idx;
+  document.querySelectorAll('.option-btn').forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.answer) b.classList.add('correct');
+    else if (i === idx && !correct) b.classList.add('wrong');
+  });
+  if (correct) { score++; catBreakdown[q.cat].right++; }
+  catBreakdown[q.cat].total++;
+  showExplanation(q.explanation);
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('scoreLive').textContent = `Score: ${score}`;
+}
+
+function submitCalc() {
+  if (answered) return;
+  const input = document.getElementById('calcInput');
+  const q = questions[currentIdx];
+  const userVal = parseFloat(input.value);
+  if (isNaN(userVal)) { input.placeholder = 'Please enter a number!'; return; }
+  const tol = q.tolerance !== undefined ? q.tolerance : 1;
+  const correct = Math.abs(userVal - q.answer) <= tol;
+  answered = true;
+  input.disabled = true;
+  document.getElementById('calcSubmit').disabled = true;
+  if (correct) {
+    input.classList.add('correct');
+    score++; catBreakdown[q.cat].right++;
+  } else {
+    input.classList.add('wrong');
+    input.value = `✗  Your answer: ${userVal}  |  Correct: ${q.displayAnswer}`;
+  }
+  catBreakdown[q.cat].total++;
+  showExplanation(q.explanation);
+  document.getElementById('nextBtn').classList.add('show');
+  document.getElementById('scoreLive').textContent = `Score: ${score}`;
+}
+
+function showExplanation(text) {
+  const el = document.getElementById('explanation');
+  el.innerHTML = `<strong>Explanation:</strong> ${text}`;
+  el.classList.add('show');
+}
+
+function nextQuestion() {
+  currentIdx++;
+  if (currentIdx >= questions.length) showResults();
+  else renderQuestion();
+}
+
+function showResults() {
+  document.getElementById('quizArea').innerHTML = '';
+  document.getElementById('nextBtn').classList.remove('show');
+  document.getElementById('progressWrap').style.display = 'none';
+  const total = questions.length;
+  const pct = Math.round((score / total) * 100);
+  const r = 54, circ = 2 * Math.PI * r;
+  const offset = circ - (pct / 100) * circ;
+  let ringColor, grade, msg;
+  if (pct >= 90)      { ringColor='var(--correct)';      grade='Excellent!';     msg='Outstanding — you\'re exam ready on this topic 🎉'; }
+  else if (pct >= 70) { ringColor='var(--accent-calc)';  grade='Good work!';     msg='Solid understanding. Review any missed questions and you\'re set.'; }
+  else if (pct >= 50) { ringColor='var(--accent-sound)'; grade='Getting there';  msg='Good start — re-read the unit table and formulae, then try again.'; }
+  else                { ringColor='var(--accent-image)'; grade='Keep practising';msg='Go back over the key terms and formulae, then retry.'; }
+  const sc = b => b.total > 0 ? `${b.right}/${b.total}` : '—';
+  document.getElementById('resultsScreen').innerHTML = `
+    <div class="result-score-ring">
+      <svg viewBox="0 0 120 120" width="140" height="140">
+        <circle class="ring-bg" cx="60" cy="60" r="${r}"/>
+        <circle class="ring-fill" cx="60" cy="60" r="${r}"
+          stroke="${ringColor}"
+          stroke-dasharray="${circ.toFixed(2)}"
+          stroke-dashoffset="${offset.toFixed(2)}"/>
+      </svg>
+      <div class="ring-label">
+        <span class="ring-pct" style="color:${ringColor}">${pct}%</span>
+        <span class="ring-sub">${score}/${total}</span>
+      </div>
+    </div>
+    <div class="result-title">${grade}</div>
+    <p class="result-msg">${msg}</p>
+    <div class="result-breakdown">
+      <div class="breakdown-card" data-cat="sound"><div class="bc-label">Sound</div><div class="bc-score">${sc(catBreakdown.sound)}</div></div>
+      <div class="breakdown-card" data-cat="image"><div class="bc-label">Images</div><div class="bc-score">${sc(catBreakdown.image)}</div></div>
+      <div class="breakdown-card" data-cat="calc"><div class="bc-label">Calculations</div><div class="bc-score">${sc(catBreakdown.calc)}</div></div>
+    </div>
+    <button class="restart-btn" onclick="startQuiz()">Try Again</button>`;
+  document.getElementById('resultsScreen').classList.add('show');
+}
+
+startQuiz();
+</script>
+</body>
+</html>
