@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
 <title>Sound & Images Quiz — OCR GCSE CS</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
   :root {
     --bg: #0a0a0f;
@@ -28,7 +30,7 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -57,7 +59,7 @@
 
   .subject-tag {
     display: inline-block;
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     letter-spacing: 2px;
     color: var(--accent-sound);
@@ -90,7 +92,7 @@
   }
 
   .cat-pill {
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     padding: 6px 14px;
     border-radius: 20px;
@@ -117,7 +119,7 @@
     background: none;
     border: 1px solid var(--border);
     color: var(--text-dim);
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     padding: 8px 18px;
     border-radius: 20px;
@@ -144,7 +146,7 @@
   .ref-panel h3 {
     font-size: 11px;
     color: var(--accent-calc);
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     margin-bottom: 14px;
@@ -153,7 +155,7 @@
   .unit-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 13px;
   }
 
@@ -192,7 +194,7 @@
 
   .formula-row:last-child { border-bottom: none; }
   .formula-name { color: var(--text-dim); font-size: 12px; min-width: 200px; flex-shrink: 0; padding-top: 1px; }
-  .formula-eq { font-family: 'DM Mono', monospace; color: var(--accent-calc); font-size: 13px; line-height: 1.5; }
+  .formula-eq { font-family: 'IBM Plex Mono', monospace; color: var(--accent-calc); font-size: 13px; line-height: 1.5; }
 
   .ref-panels-wrap { margin-bottom: 20px; }
 
@@ -205,8 +207,8 @@
     margin-bottom: 8px;
   }
 
-  .q-counter { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text-dim); }
-  .score-live { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent-gold); }
+  .q-counter { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--text-dim); }
+  .score-live { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--accent-gold); }
   .progress-bar-bg { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
 
   .progress-bar-fill {
@@ -249,7 +251,7 @@
   }
 
   .q-type-tag {
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 10px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -272,7 +274,7 @@
     border-radius: 8px;
     padding: 14px 18px;
     color: var(--text);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -291,7 +293,7 @@
   }
 
   .option-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     width: 22px; height: 22px;
     border-radius: 4px;
@@ -318,7 +320,7 @@
     border-radius: 8px;
     padding: 14px 18px;
     color: var(--text);
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
     outline: none;
     transition: border-color 0.2s;
@@ -335,7 +337,7 @@
     border: none;
     border-radius: 8px;
     padding: 14px 22px;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
@@ -361,7 +363,7 @@
   .explanation.show { display: block; animation: fadeIn 0.3s ease; }
   .explanation strong { color: var(--text); }
   .explanation code {
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     background: var(--surface2);
     padding: 2px 6px;
     border-radius: 4px;
@@ -376,7 +378,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     color: var(--text);
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
@@ -416,7 +418,7 @@
     align-items: center; justify-content: center;
   }
 
-  .ring-pct { font-size: 30px; font-weight: 800; font-family: 'DM Mono', monospace; }
+  .ring-pct { font-size: 30px; font-weight: 800; font-family: 'IBM Plex Mono', monospace; }
   .ring-sub  { font-size: 12px; color: var(--text-dim); font-weight: 400; }
   .result-title { font-size: 26px; font-weight: 800; margin-bottom: 8px; }
   .result-msg   { color: var(--text-dim); font-size: 15px; margin-bottom: 32px; }
@@ -437,7 +439,7 @@
 
   .bc-label {
     font-size: 11px;
-    font-family: 'DM Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 6px;
@@ -446,7 +448,7 @@
   .breakdown-card[data-cat="sound"] .bc-label { color: var(--accent-sound); }
   .breakdown-card[data-cat="image"] .bc-label { color: var(--accent-image); }
   .breakdown-card[data-cat="calc"]  .bc-label { color: var(--accent-calc); }
-  .bc-score { font-size: 22px; font-weight: 800; font-family: 'DM Mono', monospace; }
+  .bc-score { font-size: 22px; font-weight: 800; font-family: 'IBM Plex Mono', monospace; }
 
   .restart-btn {
     background: linear-gradient(135deg, var(--accent-sound), var(--accent-calc));
@@ -454,7 +456,7 @@
     border-radius: 8px;
     padding: 16px 40px;
     color: #000;
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 15px;
     font-weight: 800;
     cursor: pointer;
@@ -471,14 +473,21 @@
     .formula-name { min-width: 130px; }
   }
 </style>
+<style>
+  body.quiz-page { --bg: #000; --surface: #0c0d10; --surface2: #121318; --surface3: #181a20; --accent: #2563eb; --text: #f5f5f7; --text-dim: #86868b; --border: #22252a; }
+  body.quiz-page.light-theme { --bg: #fff; --surface: #fff; --surface2: #f5f5f7; --surface3: #eeeeef; --accent: #2563eb; --text: #1d1d1f; --text-dim: #6e6e73; --border: #d2d2d7; }
+  .quiz-page .container { background: transparent; }
+</style>
 </head>
-<body>
-<div class="container">
+<body class="quiz-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><nav class="site-nav" aria-label="Primary navigation"><a class="brand" href="index.html">Ashvik Dubey</a><div class="nav-links"><a href="index.html">Home</a><a href="skills.html">Skills</a><a href="achievements.html">Achievements</a><a href="now.html">Now</a><a href="about.html">About</a><a href="contact.html">Contact</a><span class="nav-divider" aria-hidden="true"></span><a class="active" href="projects.html">Projects</a></div><button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Theme</span></button></nav></header>
+<div id="main-content" class="container">
 
   <header>
     <div class="subject-tag">OCR GCSE CS · J277</div>
     <h1>Sound &amp; Images</h1>
-    <p class="subtitle">Year 11 Recap Quiz · Data Representation</p>
+    <p class="subtitle">My Year 11 recap quiz · Data representation</p>
   </header>
 
   <div class="categories" id="catFilter">
@@ -1017,6 +1026,8 @@ function showResults() {
   document.getElementById('progressWrap').style.display = 'none';
   const total = questions.length;
   const pct = Math.round((score / total) * 100);
+  const previousBest = Number(localStorage.getItem('ashvik-sound-best') || 0);
+  if (score > previousBest) localStorage.setItem('ashvik-sound-best', String(score));
   const r = 54, circ = 2 * Math.PI * r;
   const offset = circ - (pct / 100) * circ;
   let ringColor, grade, msg;
@@ -1052,5 +1063,7 @@ function showResults() {
 
 startQuiz();
 </script>
+<footer class="site-footer"><div class="footer-inner page-shell"><div><a class="brand footer-brand" href="index.html">Ashvik Dubey</a><p class="footer-note">Sound &amp; Images · A Computer Science study experiment by Ashvik</p></div><div class="footer-nav"><div class="footer-group"><span>Return</span><a href="projects.html">Projects</a><a href="index.html">Home</a></div><div class="footer-group"><span>Socials</span><a href="https://github.com/kuturud" target="_blank" rel="noopener noreferrer">GitHub</a><a href="contact.html">Contact</a></div></div></div></footer>
 </body>
+<script src="animations.js"></script><script src="analytics.js"></script>
 </html>

@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Ashvik Dubey about projects, collaboration, or questions.">
+    <link rel="icon" href="favicon.ico" sizes="any">
     <title>Contact - Ashvik Dubey</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="modern-nav">
-        <div class="nav-container">
-            <div class="logo">AD</div>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="skills.html" class="nav-link">Skills</a>
-                <a href="contact.html" class="nav-link active">Contact</a>
-                <a href="about.html" class="nav-link">About</a>
-            </div>
-        </div>
-    </nav>
-    <div class="top-container">
-        <h1 class="animate-fade-in">Contact Me</h1>
-    </div>
-    <div class="middle-container">
-        <div class="profile animate-on-scroll">
-            <h2>Get In Touch</h2>
-            <h3>If you ever want to get in touch, use the form below, or feel free to email me at ashvikdubey@gmail.com. I try my best to reply to things but there sadly aren't enough hours to respond to everyone. 😭</h3>
-        </div>
-        <div class="contact animate-on-scroll">
-            <form action="mailto:ashvikdubey@gmail.com" method="post" enctype="text/plain">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header"><nav class="site-nav" aria-label="Primary navigation"><a class="brand" href="index.html">Ashvik Dubey</a><div class="nav-links"><a href="index.html">Home</a><a href="skills.html">Skills</a><a href="achievements.html">Achievements</a><a href="now.html">Now</a><a href="about.html">About</a><a class="active" href="contact.html">Contact</a><span class="nav-divider" aria-hidden="true"></span><a href="projects.html">Projects</a></div><button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Theme</span></button></nav></header>
+    <main id="main-content" class="page-shell">
+        <section class="hero">
+            <p class="eyebrow">Contact / Open channel</p>
+            <h1>Let’s talk.</h1>
+            <p class="hero-statement">You can use the form below or email me directly at hi@ashvikdubey.com about projects, ideas, or questions.</p>
+        </section>
+        <section class="module-section contact-section" aria-labelledby="contact-title">
+            <div class="section-bar"><h2 id="contact-title">Message</h2></div>
+            <div class="contact contact-card">
+                <form action="https://formspree.io/f/maykrkvd" method="post" data-contact-form data-endpoint="https://formspree.io/f/maykrkvd">
                 <label for="fname">First Name</label>
                 <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
                 <label for="lname">Last Name</label>
                 <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
-                <label for="country">Country</label>
-                <input type="text" id="country" name="country" placeholder="Your Country">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                <label for="country">Country <span>(optional)</span></label>
+                <input type="text" id="country" name="country" placeholder="Your country">
                 <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" required></textarea>
-                <input type="submit" value="Send Message">
-            </form>
-        </div>
-        <hr class="divider">
-        <div class="get-in-touch animate-on-scroll">
-            <h2>Connect With Me</h2>
-            <p class="contact-message">You can also find me on social media and check out my projects!</p>
-            <div style="margin: 30px 0;">
+                <textarea id="subject" name="message" placeholder="Write something.." style="height:200px" required></textarea>
+                <input type="hidden" name="_subject" value="New message from ashvikdubey.com">
+                <button type="submit">Send Message</button>
+                <p class="form-status" data-contact-status aria-live="polite">Prefer email? hi@ashvikdubey.com</p>
+                </form>
+            </div>
+        </section>
+        <section class="module-section contact-links-section" aria-labelledby="elsewhere-title">
+            <div class="section-bar"><h2 id="elsewhere-title">Socials</h2></div>
+            <div class="section-action">
                 <a class="btn" href="https://github.com/kuturud" target="_blank">GITHUB</a>
                 <a class="btn" href="https://www.linkedin.com/in/ashvik-dubey/" target="_blank">LINKEDIN</a>
                 <a class="btn" href="https://www.instagram.com/ashvikdubey/" target="_blank">INSTAGRAM</a>
             </div>
-        </div>
-    </div>
-    <div class="bottom-container">
-        <a class="footer-link" href="https://github.com/kuturud" target="_blank">GitHub</a>
-        <a class="footer-link" href="https://www.linkedin.com/in/ashvik-dubey/" target="_blank">LinkedIn</a>
-        <a class="footer-link" href="https://www.instagram.com/ashvikdubey/" target="_blank">Instagram</a>
-        <a class="footer-link" href="/bhajan-slide-generator">Bhajan Slide Generator</a>
-        <p class="copyright">© 2025 Ashvik Dubey</p>
-    </div>
-    <script src="animations.js"></script>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="footer-inner page-shell"><div><a class="brand footer-brand" href="index.html">Ashvik Dubey</a><p class="footer-note">© 2026 Ashvik Dubey</p></div><div class="footer-nav"><div class="footer-group"><span>Explore</span><a href="index.html">Home</a><a href="skills.html">Skills</a><a href="achievements.html">Achievements</a><a href="about.html">About</a><a href="now.html">Now</a><a href="changelog.html">Changelog</a><a href="contact.html">Contact</a></div><div class="footer-group"><span>Projects</span><a href="projects.html">Projects</a><a href="cv.html">CV</a><a href="/bhajan-slide-generator">Bhajan Slides</a></div>    <div class="footer-group"><span>Socials</span><a href="https://github.com/kuturud">GitHub</a><a href="https://www.linkedin.com/in/ashvik-dubey/">LinkedIn</a><a href="https://www.instagram.com/ashvikdubey/">Instagram</a></div></div></div></footer>
+    <script src="animations.js"></script><script src="analytics.js"></script><script src="contact.js"></script>
 </body>
 </html>
