@@ -3,78 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashvik Dubey</title>
+    <meta name="description" content="Ashvik Dubey — student developer at Saint Olave's Grammar School.">
+    <meta property="og:title" content="Ashvik Dubey — Student Developer">
+    <meta property="og:description" content="Projects, experiments, music, and study by Ashvik Dubey.">
+    <meta property="og:url" content="https://ashvikdubey.com/">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://ashvikdubey.com/">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <title>Ashvik Dubey — Student Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ashvik Dubey","url":"https://ashvikdubey.com/","sameAs":["https://github.com/kuturud","https://www.linkedin.com/in/ashvik-dubey/","https://www.instagram.com/ashvikdubey/"],"description":"Student developer at Saint Olave's Grammar School."}</script>
 </head>
 <body>
-    <nav class="modern-nav">
-        <div class="nav-container">
-            <div class="logo">AD</div>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Primary navigation">
+            <a class="brand" href="index.html"><span>Ashvik Dubey</span></a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="skills.html" class="nav-link">Skills</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="about.html" class="nav-link">About</a>
+                <a class="active" href="index.html">Home</a>
+                <a href="skills.html">Skills</a>
+                <a href="achievements.html">Achievements</a><a href="now.html">Now</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <span class="nav-divider" aria-hidden="true"></span>
+                <a href="projects.html">Projects</a>
+            </div>
+            <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+                <span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Theme</span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main-content" class="page-shell">
+        <section class="hero home-hero">
+            <p class="eyebrow">Student developer / Saint Olave's Grammar School</p>
+            <h1>Ashvik Dubey</h1>
+            <p class="hero-statement">I’m a student developer studying Maths, Further Maths, Physics, Chemistry, and Computer Science.</p>
+            <div class="hero-actions">
+                <a class="button button-primary" href="skills.html">View skills <span>↗</span></a>
+                <a class="button button-quiet" href="contact.html">Get in touch <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="module-section">
+            <div class="section-bar">
+                <h2>Selected modules</h2>
+            </div>
+            <div class="bento-grid">
+                <article class="hardware-card academic-card">
+                    <div class="card-topline"><span>Academic profile</span></div>
+                    <h3>Five subjects.<br>One technical direction.</h3>
+                    <div class="tag-list">
+                        <span>Mathematics</span><span>Further Maths</span><span>Physics</span><span>Chemistry</span><span>Computer Science</span>
+                    </div>
+                    <a class="card-link" href="about.html">Read profile <span>↗</span></a>
+                </article>
+                <article class="hardware-card code-card">
+                    <div class="card-topline"><span>Code core</span></div>
+                    <h3>Small tools.<br>Useful experiments.</h3>
+                    <p>I build interfaces and software projects to learn by doing, with a focus on clear structure and careful details.</p>
+                    <a class="project-row" href="/bhajan-slide-generator">
+                        <span><b>Bhajan Slide Generator</b><small>Project / utility</small></span><span class="row-arrow">↗</span>
+                    </a>
+                    <a class="card-link" href="https://github.com/kuturud" target="_blank" rel="noopener noreferrer">GitHub profile <span>↗</span></a>
+                </article>
+                <article class="hardware-card experiments-card">
+                    <div class="card-topline"><span>Experiments</span></div>
+                    <h3>Binary &amp; sound.</h3>
+                    <p>I make interactive study tools for computing concepts and digital media.</p>
+                    <div class="experiment-links">
+                        <a href="binary.html">Binary &amp; Hex Quest <span>↗</span></a>
+                        <a href="sound.html">Sound &amp; Images Quiz <span>↗</span></a>
+                    </div>
+                </article>
+                <article class="hardware-card achievements-card">
+                    <div class="card-topline"><span>Achievements</span></div>
+                    <h3>Work worth<br>keeping track of.</h3>
+                    <p>I keep a concise record of milestones, projects, and things I learn along the way.</p>
+                    <a class="button button-small" href="achievements.html">View achievements <span>↗</span></a>
+                </article>
+            </div>
+        </section>
+        <section class="module-section now-section">
+            <div class="section-bar"><h2>Currently learning</h2></div>
+            <div class="now-grid">
+                <article class="hardware-card"><p class="eyebrow">Focus</p><h3>Building better tools</h3><p>Improving my frontend fundamentals, learning through small projects, and making interfaces that feel clear and useful.</p></article>
+                <article class="hardware-card music-card"><p class="eyebrow">Music / development</p><h3>Practice shapes projects</h3><p>Guitar, violin, and piano keep me working on patience, feedback, rhythm, and consistency alongside programming.</p><a class="card-link" href="now.html">See what I’m learning <span>↗</span></a></article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner page-shell">
+            <div>
+                <a class="brand footer-brand" href="index.html">Ashvik Dubey</a>
+                <p class="footer-note">© 2026 Ashvik Dubey</p>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-group"><span>Explore</span><a href="index.html">Home</a><a href="skills.html">Skills</a><a href="achievements.html">Achievements</a><a href="about.html">About</a><a href="now.html">Now</a><a href="changelog.html">Changelog</a><a href="contact.html">Contact</a></div>
+                <div class="footer-group"><span>Projects</span><a href="projects.html">Projects</a><a href="cv.html">CV</a><a href="/bhajan-slide-generator">Bhajan Slides</a></div>
+                <div class="footer-group"><span>Socials</span><a href="https://github.com/kuturud" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/ashvik-dubey/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://www.instagram.com/ashvikdubey/" target="_blank" rel="noopener noreferrer">Instagram</a></div>
             </div>
         </div>
-    </nav>
-
-    <div class="top-container">
-        <span class="emoji-cloud top-cloud animate-float" aria-hidden="true">☁️</span>
-        <h1 class="animate-fade-in">I'm Ashvik.</h1>
-        <h2 class="animate-fade-in-delay">a <span class="typing-text">programmer</span>.</h2>
-        <span class="emoji-cloud bottom-cloud animate-float-reverse" aria-hidden="true">☁️</span>
-        <span class="emoji-mountain" aria-hidden="true">⛰️</span>
-    </div>
-
-    <div class="middle-container">
-        <div class="profile animate-on-scroll">
-            <div class="emoji-avatar pulse" role="img" aria-label="Developer avatar">🧑‍💻</div>
-            <h2>Hello.</h2>
-            <p class="intro-text">I'm a tech-savvy student and passionate musician. I create content, code, and make music.</p>
-        </div>
-        <hr class="divider">
-        
-        <div class="skills-preview animate-on-scroll">
-            <h2>What I Do</h2>
-            <div class="skill-cards">
-                <div class="skill-card card-hover">
-                    <div class="skill-emoji" role="img" aria-label="Music">🎵</div>
-                    <h3>Music</h3>
-                    <p>Guitar, violin, and piano player with a passion for creating melodies</p>
-                </div>
-                <div class="skill-card card-hover">
-                    <div class="skill-emoji" role="img" aria-label="Video Editing">🎬</div>
-                    <h3>Video Editing</h3>
-                    <p>Use vfxdoubled.com, he's the best video editor.</p>
-                </div>
-                <div class="skill-card card-hover">
-                    <div class="skill-emoji" role="img" aria-label="Web Design">💻</div>
-                    <h3>Web Design</h3>
-                    <p>Building beautiful and functional websites</p>
-                </div>
-            </div>
-        </div>
-        <hr class="divider">
-        
-        <div class="get-in-touch animate-on-scroll">
-            <h2>Get In Touch</h2>
-            <h3>If you love music and tech as much as I do.</h3>
-            <p class="contact-message">Want to collaborate or just say hi? I'd love to hear from you!</p>
-            <a class="btn" href="contact.html">CONTACT ME</a>
-        </div>
-    </div>
-
-    <div class="bottom-container">
-        <a class="footer-link" href="https://youtube.com/@ashmakes21" target="_blank">YouTube</a>
-        <a class="footer-link" href="https://github.com/kuturud" target="_blank">GitHub</a>
-        <a class="footer-link" href="/bhajan-slide-generator">Bhajan Slide Generator</a>
-        <p class="copyright">© 2025 Ashvik Dubey</p>
-    </div>
-
-    <script src="animations.js"></script>
+    </footer>
+    <script src="animations.js"></script><script src="analytics.js"></script>
 </body>
 </html>

@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico" sizes="any">
 <title>Binary & Hex Quest</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
 :root {
   --bg: #080c18;
@@ -28,7 +30,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -62,7 +64,7 @@ body::after {
 /* ── HEADER ── */
 header { text-align: center; padding: 36px 0 24px; }
 .logo {
-  font-family: 'Space Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: clamp(1.6rem, 4.5vw, 2.8rem);
   font-weight: 700;
   background: linear-gradient(120deg, var(--accent) 0%, #a78bfa 60%, var(--accent) 100%);
@@ -89,7 +91,7 @@ header { text-align: center; padding: 36px 0 24px; }
   border: 1px solid var(--border);
   border-radius: 50px;
   padding: 5px 16px;
-  font-family: 'Space Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 0.8rem;
   color: var(--accent);
   display: flex;
@@ -102,7 +104,7 @@ header { text-align: center; padding: 36px 0 24px; }
 
 /* ── PROGRESS ── */
 .progress-wrap { margin: 10px 0 20px; }
-.progress-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-bottom: 5px; font-family: 'Space Mono', monospace; }
+.progress-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--muted); margin-bottom: 5px; font-family: 'IBM Plex Mono', monospace; }
 .progress-track { background: var(--surface); border: 1px solid var(--border); border-radius: 50px; height: 7px; overflow: hidden; }
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 50px; transition: width 0.6s cubic-bezier(.4,0,.2,1); }
 
@@ -114,7 +116,7 @@ header { text-align: center; padding: 36px 0 24px; }
   border-radius: 8px;
   color: var(--muted);
   padding: 7px 13px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
   cursor: pointer;
   transition: all 0.2s;
@@ -165,7 +167,7 @@ header { text-align: center; padding: 36px 0 24px; }
   align-items: center;
   font-size: 0.78rem;
   color: var(--muted);
-  font-family: 'Space Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
 }
 .diff-seg {
   flex: 1;
@@ -189,9 +191,9 @@ header { text-align: center; padding: 36px 0 24px; }
   margin: 16px 0;
   text-align: center;
 }
-.q-meta { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-bottom: 10px; }
+.q-meta { font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--muted); margin-bottom: 10px; }
 .question-text { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; line-height: 1.5; }
-.mono-label { font-family: 'Space Mono', monospace; color: var(--accent); font-size: 1.5rem; font-weight: 700; }
+.mono-label { font-family: 'IBM Plex Mono', monospace; color: var(--accent); font-size: 1.5rem; font-weight: 700; }
 
 /* Multi-part question */
 .multipart { text-align: left; }
@@ -203,7 +205,7 @@ input[type="text"] {
   border: 2px solid var(--border);
   border-radius: 10px;
   color: var(--text);
-  font-family: 'Space Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   font-size: 1rem;
   padding: 9px 14px;
   width: 100%;
@@ -216,7 +218,7 @@ input:focus { border-color: var(--accent); }
 input.wide { max-width: 480px; }
 
 /* ── BUTTONS ── */
-.btn { border: none; border-radius: 10px; cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 0.92rem; font-weight: 700; padding: 10px 22px; transition: all 0.18s; display: inline-block; }
+.btn { border: none; border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 700; padding: 10px 22px; transition: all 0.18s; display: inline-block; }
 .btn-primary { background: var(--accent); color: #080c18; }
 .btn-primary:hover { background: #00d4a8; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,232,184,0.3); }
 .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--muted); }
@@ -244,10 +246,10 @@ input.wide { max-width: 480px; }
   text-align: left;
   line-height: 1.65;
 }
-.hint-box code { font-family: 'Space Mono', monospace; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 4px; font-size: 0.8rem; }
+.hint-box code { font-family: 'IBM Plex Mono', monospace; background: rgba(0,0,0,0.3); padding: 1px 5px; border-radius: 4px; font-size: 0.8rem; }
 
 /* ── TABLES ── */
-table { width: 100%; border-collapse: collapse; font-family: 'Space Mono', monospace; font-size: 0.82rem; margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: 0.82rem; margin: 12px 0; }
 th { background: var(--surface2); color: var(--accent); padding: 9px 13px; text-align: left; border-bottom: 2px solid var(--border); }
 td { padding: 8px 13px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text); }
 tr:hover td { background: rgba(255,255,255,0.015); }
@@ -260,7 +262,7 @@ tr:hover td { background: rgba(255,255,255,0.015); }
   border-radius: 10px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  font-family: 'Space Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
   transition: all 0.18s;
   cursor: pointer;
   background: var(--surface2);
@@ -274,18 +276,18 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 .bit-box:hover { border-color: var(--accent); transform: scale(1.06); }
 
 /* ── ADDITION GRID ── */
-.add-grid { font-family: 'Space Mono', monospace; font-size: 1rem; text-align: right; margin: 14px auto; max-width: 300px; line-height: 2.1; }
+.add-grid { font-family: 'IBM Plex Mono', monospace; font-size: 1rem; text-align: right; margin: 14px auto; max-width: 300px; line-height: 2.1; }
 .add-grid .row { display: flex; justify-content: flex-end; gap: 3px; }
 .add-grid .bit { width: 22px; text-align: center; }
 .add-grid .divider { border-top: 2px solid var(--muted); margin: 3px 0; }
 
 /* ── HEX GRID ── */
 .hex-ref { display: grid; grid-template-columns: repeat(8,1fr); gap: 3px; margin: 10px 0; }
-.hex-cell { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 4px; text-align: center; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text); }
+.hex-cell { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 4px; text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); }
 .hex-cell span { display: block; color: var(--accent); font-weight: 700; font-size: 0.82rem; }
 
 /* ── REF PANEL ── */
-.ref-panel { background: var(--surface2); border-left: 3px solid var(--accent2); border-radius: 0 10px 10px 0; padding: 12px 14px; margin: 12px 0; font-family: 'Space Mono', monospace; font-size: 0.8rem; color: #a78bfa; line-height: 1.9; }
+.ref-panel { background: var(--surface2); border-left: 3px solid var(--accent2); border-radius: 0 10px 10px 0; padding: 12px 14px; margin: 12px 0; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; color: #a78bfa; line-height: 1.9; }
 
 /* ── STREAK ── */
 .streak-flash {
@@ -311,17 +313,17 @@ tr:hover td { background: rgba(255,255,255,0.015); }
 
 /* ── COMPLETION ── */
 .complete-card { text-align: center; padding: 32px 20px; }
-.big-score { font-family: 'Space Mono', monospace; font-size: 3.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.big-score { font-family: 'IBM Plex Mono', monospace; font-size: 3.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .grade-badge { display: inline-block; background: var(--surface2); border: 2px solid var(--accent); border-radius: 50px; padding: 5px 22px; font-size: 1rem; font-weight: 800; color: var(--accent); margin: 10px 0; }
 .diff-summary { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 14px 0; }
-.diff-summary-chip { padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; font-family: 'Space Mono', monospace; }
+.diff-summary-chip { padding: 6px 16px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; font-family: 'IBM Plex Mono', monospace; }
 
 /* ── OVERFLOW HIGHLIGHT ── */
 .ov-bit { color: var(--danger); font-weight: 700; }
 
 /* ── OVERFLOW TOGGLE ── */
 .ov-toggle { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
-.ov-btn { padding: 6px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted); transition: all 0.15s; font-family: 'Outfit', sans-serif; }
+.ov-btn { padding: 6px 20px; border-radius: 8px; font-size: 0.88rem; font-weight: 700; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--muted); transition: all 0.15s; font-family: 'Inter', sans-serif; }
 .ov-btn.selected-yes { border-color: var(--danger); color: var(--danger); background: rgba(244,63,94,0.1); }
 .ov-btn.selected-no { border-color: var(--accent); color: var(--accent); background: rgba(0,232,184,0.1); }
 
@@ -333,13 +335,20 @@ tr:hover td { background: rgba(255,255,255,0.015); }
   .card{padding:18px;}
 }
 </style>
+<style>
+  body.quiz-page { --bg: #000; --surface: #0c0d10; --surface2: #121318; --surface3: #181a20; --accent: #2563eb; --text: #f5f5f7; --muted: #86868b; --border: #22252a; }
+  body.quiz-page.light-theme { --bg: #fff; --surface: #fff; --surface2: #f5f5f7; --surface3: #eeeeef; --accent: #2563eb; --text: #1d1d1f; --muted: #6e6e73; --border: #d2d2d7; }
+  .quiz-page .container { background: transparent; }
+</style>
 </head>
-<body>
-<div class="container">
+<body class="quiz-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header"><nav class="site-nav" aria-label="Primary navigation"><a class="brand" href="index.html">Ashvik Dubey</a><div class="nav-links"><a href="index.html">Home</a><a href="skills.html">Skills</a><a href="achievements.html">Achievements</a><a href="now.html">Now</a><a href="about.html">About</a><a href="contact.html">Contact</a><span class="nav-divider" aria-hidden="true"></span><a class="active" href="projects.html">Projects</a></div><button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Theme</span></button></nav></header>
+<div id="main-content" class="container">
 
 <header>
   <div class="logo">Binary &amp; Hex Quest</div>
-  <div class="tagline">Hosted by&nbsp;·&nbsp; Ashvik Dubey</div>
+  <div class="tagline">My Computer Science study experiment</div>
 </header>
 
 <div class="stats-bar">
@@ -402,7 +411,7 @@ tr:hover td { background: rgba(255,255,255,0.015); }
       <div class="bit-box" data-w="2"><span class="bv">0</span><span class="bw">2</span></div>
       <div class="bit-box" data-w="1"><span class="bv">0</span><span class="bw">1</span></div>
     </div>
-    <div style="text-align:center;font-family:'Space Mono',monospace;color:var(--accent);font-size:1.1rem;margin-bottom:6px">
+    <div style="text-align:center;font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:1.1rem;margin-bottom:6px">
       Total = <span id="demoTotal">0</span>
     </div>
     <h3>Example: 157 → Binary</h3>
@@ -1040,6 +1049,7 @@ function showFinal(){
   document.getElementById('finalScreen').style.display='block';
   const total=(correct+wrong)||1;
   const pct=Math.round(correct/total*100);
+  localStorage.setItem('ashvik-binary-best', JSON.stringify({ score, pct, completedAt: new Date().toISOString() }));
   document.getElementById('finalScore').textContent=score+' pts';
   let grade,msg;
   if(pct>=90){grade='Grade 9 ★★★';msg='Outstanding! You have mastered all areas of data representation.';}
@@ -1093,5 +1103,7 @@ document.querySelectorAll('#demoBits .bit-box').forEach(box=>{
 // ═══════════════════════════════════════════════════════════════
 initTopic(0);
 </script>
+<footer class="site-footer"><div class="footer-inner page-shell"><div><a class="brand footer-brand" href="index.html">Ashvik Dubey</a><p class="footer-note">Binary &amp; Hex Quest · A Computer Science study experiment by Ashvik</p></div><div class="footer-nav"><div class="footer-group"><span>Return</span><a href="projects.html">Projects</a><a href="index.html">Home</a></div><div class="footer-group"><span>Socials</span><a href="https://github.com/kuturud" target="_blank" rel="noopener noreferrer">GitHub</a><a href="contact.html">Contact</a></div></div></div></footer>
 </body>
+<script src="animations.js"></script><script src="analytics.js"></script>
 </html>
